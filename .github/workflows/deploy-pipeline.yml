@@ -7,27 +7,21 @@ on:
 
 jobs:
   deploy-dev:
-    runs-on: ubuntu-20.04
-    environment: Dev
-    concurrency: dev-env
-    steps:
-      - uses: actions/checkout@v3
-      - run: cat imagedefinitions.json
+    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
+    with:
+      environment: dev
+    secrets: inherit
 
   deploy-qa:
-    runs-on: ubuntu-20.04
-    environment: QA
-    concurrency: qa-env
     needs: deploy-dev
-    steps:
-      - uses: actions/checkout@v3
-      - run: cat imagedefinitions.json
+    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
+    with:
+      environment: qa
+    secrets: inherit
 
   deploy-live:
-    runs-on: ubuntu-20.04
-    environment: Live
-    concurrency: live-env
     needs: deploy-qa
-    steps:
-      - uses: actions/checkout@v3
-      - run: cat imagedefinitions.json
+    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
+    with:
+      environment: live
+    secrets: inherit

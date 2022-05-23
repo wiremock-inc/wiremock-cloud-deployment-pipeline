@@ -1,0 +1,33 @@
+name: WireMock Cloud Deploy to Environment
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      ENV_SPECIFIC_SECRET:
+        required: true
+
+permissions: write-all
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    environment: ${{ inputs.environment }}
+    concurrency: ${{ inputs.environment }}-env
+    env:
+      ENV_SPECIFIC_SECRET: ${{ secrets.ENV_SPECIFIC_SECRET }}
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::499333472133:role/GitHub-Manage-WireMock-Cloud-Images
+          aws-region: us-east-1
+
+      - uses: aws-actions/amazon-ecr-login@v1
+
+      - run: ./deploy.sh wiremock-cloud-${{ inputs.environment }}
