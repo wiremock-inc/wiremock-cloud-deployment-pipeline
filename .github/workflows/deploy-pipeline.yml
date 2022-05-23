@@ -2,7 +2,8 @@ name: WireMock Cloud Deployment Pipeline
 
 on:
   push:
-    main:
+    branches:
+      - main
 
 jobs:
   deploy-dev:
