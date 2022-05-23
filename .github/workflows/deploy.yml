@@ -25,7 +25,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::499333472133:role/GitHub-Manage-WireMock-Cloud-Images
+          role-to-assume: arn:aws:iam::499333472133:role/GitHub-CDK-Deploy
           aws-region: us-east-1
 
       - uses: aws-actions/amazon-ecr-login@v1
