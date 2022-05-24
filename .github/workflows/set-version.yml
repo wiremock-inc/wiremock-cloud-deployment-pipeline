@@ -1,4 +1,4 @@
-name: WireMock Cloud Set Image Version
+name: Set Image Version
 
 on:
   workflow_dispatch:

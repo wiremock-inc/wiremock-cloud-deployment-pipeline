@@ -1,4 +1,4 @@
-name: WireMock Cloud Deployment Pipeline
+name: Deployment Pipeline
 
 on:
   push:
