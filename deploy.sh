@@ -6,6 +6,11 @@ main() {
   local stack=$1
 
   local cdk_image; cdk_image=$(get_cdk_image)
+  # check that someone hasn't just sent us some random image to execute with our AWS creds...
+  if [[ $cdk_image != 499333472133.dkr.ecr.us-east-1.amazonaws.com/* ]]; then
+    echo "Not running unknown cdk image $cdk_image"
+    exit 1
+  fi
 
   do_deploy "$cdk_image" "$stack"
 }
