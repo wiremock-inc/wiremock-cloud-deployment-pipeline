@@ -19,9 +19,14 @@ do_deploy() {
   local stack=$2
 
   docker run --rm \
+      -e AWS_DEFAULT_REGION \
+      -e AWS_REGION \
+      -e AWS_ACCESS_KEY_ID \
+      -e AWS_SECRET_ACCESS_KEY \
+      -e AWS_SESSION_TOKEN \
       --mount "type=bind,src=${PWD}/imagedefinitions.json,target=/etc/imagedefinitions.json" \
       "$cdk_image" \
-      list
+      deploy "$stack"
 }
 
 main "$@"
