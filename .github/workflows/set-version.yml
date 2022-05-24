@@ -1,4 +1,4 @@
-name: WireMock Cloud Deploy to Environment
+name: WireMock Cloud Set Image Version
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ on:
         type: string
 
 jobs:
-  deploy:
+  set-version:
     runs-on: ubuntu-20.04
     steps:
 
@@ -26,7 +26,7 @@ jobs:
           ref: main
           token: ${{ secrets.SET_VERSION_TOKEN }}
 
-      - run: ./set-version.sh ${{ inputs.name }} ${{ inputs.image_uri }} ${{ inputs.source_action }} ${{ inputs.source_commit }}
+      - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} ${{ github.event.inputs.source_action }} ${{ github.event.inputs.source_commit }}
 
       - uses: EndBug/add-and-commit@v9
         with:
