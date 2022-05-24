@@ -41,6 +41,7 @@ do_deploy() {
       --mount "type=bind,src=${PWD}/imagedefinitions.json,target=/etc/imagedefinitions.json" \
       "$cdk_image" \
       deploy "$stack" \
+      --require-approval never \
       --parameters uiImage="$ui_image" \
       --parameters mothershipImage="$mothership_image" \
       --parameters mockHostImage="$mock_host_image"
