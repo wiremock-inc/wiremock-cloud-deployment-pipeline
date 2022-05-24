@@ -16,7 +16,7 @@ main() {
   git config --local user.name "github-actions[bot]"
 
   git add imagedefinitions.json
-  git commit -m "Set $name to $image_uri"
+  git commit -m "Set $name to ${image_uri#*:}" -m "$image_uri"
   git push
 }
 
