@@ -27,8 +27,3 @@ jobs:
           token: ${{ secrets.SET_VERSION_TOKEN }}
 
       - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} ${{ github.event.inputs.source_action }} ${{ github.event.inputs.source_commit }}
-
-      - uses: EndBug/add-and-commit@v9
-        with:
-          add: imagedefinitions.json
-          message: Set ${{ inputs.name }} to ${{ inputs.image_uri }}
