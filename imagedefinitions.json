@@ -9,7 +9,11 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:latest"
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:d4f24381081bdf90affab0d3caf8859cc310881f",
+    "metadata": {
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/2383230355",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/d4f24381081bdf90affab0d3caf8859cc310881f"
+    }
   },
   {
     "name": "mothership",
