@@ -15,8 +15,9 @@ main() {
   local ui_image; ui_image=$(get_image ui)
   local mothership_image; mothership_image=$(get_image mothership)
   local mock_host_image; mock_host_image=$(get_image mock-host)
+  local admin_image; admin_image=$(get_image admin)
 
-  do_deploy "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}"
+  do_deploy "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}"
 }
 
 get_image() {
@@ -31,6 +32,7 @@ do_deploy() {
   local ui_image_tag=$3
   local mothership_image_tag=$4
   local mock_host_image_tag=$5
+  local admin_image_tag=$6
 
   docker run --rm \
       -e AWS_DEFAULT_REGION \
@@ -44,7 +46,8 @@ do_deploy() {
       --require-approval never \
       --parameters uiImageTag="$ui_image_tag" \
       --parameters mothershipImageTag="$mothership_image_tag" \
-      --parameters mockHostImageTag="$mock_host_image_tag"
+      --parameters mockHostImageTag="$mock_host_image_tag" \
+      --parameters adminImageTag="$admin_image_tag"
 }
 
 main "$@"

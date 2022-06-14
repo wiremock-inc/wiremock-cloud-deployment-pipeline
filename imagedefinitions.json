@@ -30,5 +30,9 @@
       "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/2486037289",
       "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/e11aa47774f8baed6414e987ed8bbc63f6365c9f"
     }
+  },
+  {
+    "name": "admin",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.0.0"
   }
 ]
