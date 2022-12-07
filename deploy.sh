@@ -34,6 +34,8 @@ do_deploy() {
   local mock_host_image_tag=$5
   local admin_image_tag=$6
 
+  echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
+
   docker run --rm \
       -e AWS_DEFAULT_REGION \
       -e AWS_REGION \
