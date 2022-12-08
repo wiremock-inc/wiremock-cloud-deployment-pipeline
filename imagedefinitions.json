@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.2.175",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.2.176",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/3648691732",
-      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/d3342fcac69f6e8a0d9bc56a682be969b547853b"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/3651274878",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/2d5d5042d321c5049a9a58f320d8e93eb545de65"
     }
   },
   {
