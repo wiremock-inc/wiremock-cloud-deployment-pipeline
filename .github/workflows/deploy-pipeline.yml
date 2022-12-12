@@ -21,7 +21,7 @@ jobs:
     secrets: inherit
 
   deploy-live:
-    needs: deploy-qa
+    needs: deploy-dev
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
     with:
       environment: live
