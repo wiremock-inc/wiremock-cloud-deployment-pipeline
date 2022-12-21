@@ -1,18 +1,18 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.87.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.90.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/3706986520",
-      "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/ca038a481c60246766edba9075cef31085a97b46"
+      "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/3750708910",
+      "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/b3ed03adb7d0b139ed83edf60bbc1bc9d0d61278"
     }
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.2.181",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.2.196",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/3705277471",
-      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/e7f90e7e309f92207c0c71287b914b418ba5ecf3"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/3751461029",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/57cb576ee311e24615a45b70522d89bf37667bc5"
     }
   },
   {
@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.64.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.65.0",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/3704735786",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/127576640f8e4481f65897d56f1e5a90800ae3b7"
+      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/3728312383",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/b7657d31c64ee49becbaaa1f0899795da968baa4"
     }
   },
   {
