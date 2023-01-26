@@ -15,6 +15,14 @@ on:
       source_commit:
         required: true
         type: string
+      branch:
+        required: false
+        default: main
+        type: string
+      force:
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   set-version:
@@ -23,7 +31,7 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          ref: main
+          ref: ${{ github.event.inputs.branch }}
           token: ${{ secrets.SET_VERSION_TOKEN }}
 
-      - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} ${{ github.event.inputs.source_action }} ${{ github.event.inputs.source_commit }}
+      - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} ${{ github.event.inputs.source_action }} ${{ github.event.inputs.source_commit }} ${{ github.event.inputs.force }}

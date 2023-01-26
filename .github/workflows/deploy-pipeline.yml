@@ -7,21 +7,14 @@ on:
       - main
 
 jobs:
-  deploy-dev:
-    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
-    with:
-      environment: dev
-    secrets: inherit
-
   deploy-qa:
-    needs: deploy-dev
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
     with:
       environment: qa
     secrets: inherit
 
   deploy-live:
-    needs: deploy-dev
+    needs: deploy-qa
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
     with:
       environment: live
