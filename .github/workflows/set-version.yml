@@ -3,45 +3,26 @@ name: Set Image Version
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        type: string
-        description: The branch to update. 'dev' will deploy to dev. 'main' will deploy to qa and start a pipeline to
-          deploy to live.
-        required: false
-        options:
-          - dev
-          - main
-        default: dev
       name:
-        type: string
-        description: The service to update
         required: true
-        options:
-          - ui
-          - mothership
-          - cdk
-          - mock-host
-          - admin
+        type: string
       image_uri:
-        type: string
-        description: The entire name, or just the tag, of the remote image
         required: true
+        type: string
       source_action:
-        type: string
-        description: Set when this workflow is triggered remotely
         required: true
-        default: set manually
+        type: string
       source_commit:
-        type: string
-        description: Set when this workflow is triggered remotely
         required: true
-        default: set manually
-      force:
-        type: boolean
-        description: By default this workflow will skip if the existing tag is NOT a semantic version. Checking this
-          will make it update regardless.
+        type: string
+      branch:
         required: false
-        default: true
+        default: main
+        type: string
+      force:
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   set-version:

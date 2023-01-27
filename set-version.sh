@@ -9,14 +9,14 @@ semver_regex="^$integer\.$integer\.$integer(\-$qualifier)?(\+$qualifier)?$"
 main() {
   local name=$1
   local image_uri=$2
-  local source_action=${3:-set manually}
-  local source_commit=${4:-set manually}
-  local force=${5:-false}
+  local source_action=$3
+  local source_commit=$4
+  local force=$5
 
+  local update
   local current_tag; current_tag="$(find_current_tag "$name")"
   echo "Current tag: $current_tag force: $force"
 
-  local update
   if "$force" || [[ "$current_tag" =~ $semver_regex ]]; then
     echo "Setting the version"
     update=true
@@ -27,7 +27,7 @@ main() {
 
   if $update; then
 
-    alter_image_tag "$name" "$image_uri"
+    alter_imagedefinitions "$name" imageUri "$image_uri"
     alter_imagedefinitions "$name" metadata.sourceAction "$source_action"
     alter_imagedefinitions "$name" metadata.sourceCommit "$source_commit"
 
@@ -40,20 +40,6 @@ main() {
   fi
 }
 
-alter_image_tag() {
-  local name=$1
-  local image_uri=$2
-
-  if [[ "$image_uri" != *:* ]]; then
-    local current_image; current_image=$(find_current_image "$name")
-    image_uri="${current_image%:*}:$image_uri"
-  fi
-
-  echo "Setting $name to $image_uri"
-
-  alter_imagedefinitions "$name" imageUri "$image_uri"
-}
-
 alter_imagedefinitions() {
   local name=$1
   local key=$2
@@ -64,16 +50,10 @@ alter_imagedefinitions() {
   mv "$work_file" imagedefinitions.json
 }
 
-find_current_image() {
-  local name=$1
-
-  jq -r '( .[] | select(.name == "'"$name"'") ).imageUri' imagedefinitions.json
-}
-
 find_current_tag() {
   local name=$1
 
-  local currentImageName; currentImageName=$(find_current_image "$name")
+  local currentImageName; currentImageName=$(jq -r '( .[] | select(.name == "'"$name"'") ).imageUri' imagedefinitions.json)
   echo "${currentImageName##*:}"
 }
 
