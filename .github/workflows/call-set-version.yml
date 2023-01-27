@@ -1,0 +1,40 @@
+name: Admin app Build & Publish
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      tag:
+        required: true
+        type: string
+      branch:
+        required: true
+        type: string
+
+permissions: write-all
+
+jobs:
+  trigger-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.SET_VERSION_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'wiremock',
+              repo: 'wiremock-cloud-deployment-pipeline',
+              workflow_id: 'set-version.yml',
+              ref: 'main',
+              inputs: {
+                name: '${{ inputs.name }}',
+                image_uri: '${{ inputs.tag }}',
+                source_action: '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}',
+                source_commit: '${{ github.server_url }}/${{ github.repository }}/tree/${{ github.sha }}',
+                branch: '${{ inputs.branch }}',
+                force: 'false',
+              }
+            })
+      - run: echo 'View the "Set ${{ inputs.name }} to ${{ needs.publish-cloud-admin-docker-image.outputs.version }}" pipeline at https://github.com/wiremock/wiremock-cloud-deployment-pipeline/actions/workflows/deploy-pipeline.yml'
