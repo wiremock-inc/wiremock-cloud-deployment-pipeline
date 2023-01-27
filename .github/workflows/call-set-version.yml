@@ -12,6 +12,9 @@ on:
       branch:
         required: true
         type: string
+    secrets:
+      SET_VERSION_TOKEN:
+        required: true
 
 permissions: write-all
 
@@ -37,4 +40,4 @@ jobs:
                 force: 'false',
               }
             })
-      - run: echo 'View the "Set ${{ inputs.name }} to ${{ needs.publish-cloud-admin-docker-image.outputs.version }}" pipeline at https://github.com/wiremock/wiremock-cloud-deployment-pipeline/actions/workflows/deploy-pipeline.yml'
+      - run: echo 'View the "Set ${{ inputs.name }} to ${{ inputs.tag }}" pipeline at https://github.com/wiremock/wiremock-cloud-deployment-pipeline/actions/workflows/deploy-pipeline.yml'
