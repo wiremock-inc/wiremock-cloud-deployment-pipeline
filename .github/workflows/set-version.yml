@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        type: string
+        type: choice
         description: The branch to update. 'dev' will deploy to dev. 'main' will deploy to qa and start a pipeline to
           deploy to live.
         required: false
@@ -13,7 +13,7 @@ on:
           - main
         default: dev
       name:
-        type: string
+        type: choice
         description: The service to update
         required: true
         options:
