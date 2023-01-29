@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "1.510.0",
+    "imageUri": "1.511.0",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4037058868",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/f70178f8e555ea619fb6bc6231bf524f721fb989"
+      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4037072213",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/af41e38376dee03cb5f0fa24494b7fd3a9c0e41b"
     }
   },
   {
