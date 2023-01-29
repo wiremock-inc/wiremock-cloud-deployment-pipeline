@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "0.2.255",
+    "imageUri": "0.2.256",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/4032265350",
-      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/d1d7426b9b458fe564d666eda3d33235f99bb680"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/4037087179",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/90b4bbb3e7ad35ea874cfd6ca7de99ba26e46678"
     }
   },
   {
