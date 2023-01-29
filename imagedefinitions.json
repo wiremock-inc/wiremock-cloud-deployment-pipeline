@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "1.86.0",
+    "imageUri": "1.87.0",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/4032315082",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/fb77553c1ad93cb83c8e890956acfa3c1c657998"
+      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/4037177959",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/78a88ca94a672f21ea9b59889163a8e34269a312"
     }
   },
   {
