@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "1.111.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.111.0",
     "metadata": {
       "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/4037086710",
       "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/5004dd403cbb871a618bd3f380461f38f1c092f5"
@@ -9,15 +9,15 @@
   },
   {
     "name": "ui",
-    "imageUri": "0.2.256",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.2.255",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/4037087179",
-      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/90b4bbb3e7ad35ea874cfd6ca7de99ba26e46678"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/4032265350",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/d1d7426b9b458fe564d666eda3d33235f99bb680"
     }
   },
   {
     "name": "mothership",
-    "imageUri": "1.512.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.512.0",
     "metadata": {
       "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4037086796",
       "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/72ae870e71e692ac521f3d9cf36f147c20e45000"
@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "1.87.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.87.0",
     "metadata": {
       "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/4037177959",
       "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/78a88ca94a672f21ea9b59889163a8e34269a312"
@@ -33,7 +33,7 @@
   },
   {
     "name": "admin",
-    "imageUri": "1.51.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.51.0",
     "metadata": {
       "sourceAction": "https://github.com/mocklab/mocklab-admin/actions/runs/4037086981",
       "sourceCommit": "https://github.com/mocklab/mocklab-admin/tree/7896e785c459bcb36e84251220798a3e7507f71b"

@@ -1,4 +1,4 @@
-name: Admin app Build & Publish
+name: Call Set Version
 
 on:
   workflow_call:
