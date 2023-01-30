@@ -1,10 +1,10 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.116.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.117.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/4043104318",
-      "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/8ff1d3f1254dc0d511d966fbe7cb3a7a7b75cba3"
+      "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/4043135402",
+      "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/5db8bdc1f415ac86f13057e591bc901061103290"
     }
   },
   {
