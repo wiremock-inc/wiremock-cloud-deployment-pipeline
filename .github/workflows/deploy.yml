@@ -31,3 +31,10 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@v1
 
       - run: ./deploy.sh wiremock-cloud-${{ inputs.environment }}
+
+      - name: Run Datadog Synthetics tests
+        uses: DataDog/synthetics-ci-github-action@v0.9.2
+        with:
+          api_key: ${{secrets.DD_SYNTHETIC_TESTS_API_KEY}}
+          app_key: ${{secrets.DD_SYNTHETIC_TESTS_APP_KEY}}
+          test_search_query: 'env:${{ inputs.environment }}'
