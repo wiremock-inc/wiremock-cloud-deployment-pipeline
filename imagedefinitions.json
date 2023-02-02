@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.520.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:segment-grouping",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4072932881",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/fd525b67cb6f650d54ebf277297b5e148402fe5e"
+      "sourceAction": "set",
+      "sourceCommit": "manually"
     }
   },
   {
