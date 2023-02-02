@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:segment-grouping",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:8abd1fca7c8646e8038b1427bb7d7e6998abf97f",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
