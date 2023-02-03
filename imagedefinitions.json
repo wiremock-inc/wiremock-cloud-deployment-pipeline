@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:3e873d85beb9427593b9b154cf575f27859548be",
+    "imageUri": "https://github.com/mocklab/mocklab-ui/pull/310/files#diff-49869129c32b354f7c800670a83fd88bef4a39d80457e9d38119eb093bf6aad3R102",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
