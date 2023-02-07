@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "https:8135cae33588e1ce514a0b9850456461f6cf5c2a",
+    "imageUri": "https:master",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
