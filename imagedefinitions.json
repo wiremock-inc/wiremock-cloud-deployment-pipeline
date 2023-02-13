@@ -33,10 +33,10 @@
   },
   {
     "name": "admin",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.59.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.60.0",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-admin/actions/runs/4144587637",
-      "sourceCommit": "https://github.com/mocklab/mocklab-admin/tree/4091e12a7c61057f07ce8453bd4917c41864d857"
+      "sourceAction": "https://github.com/mocklab/mocklab-admin/actions/runs/4167845900",
+      "sourceCommit": "https://github.com/mocklab/mocklab-admin/tree/a2743d352ac226acb82bce2cf0326c096c40340c"
     }
   }
 ]
