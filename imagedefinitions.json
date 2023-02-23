@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:send-anon-id-on-login",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:a2f74e0ddd2a4fd65f8ce0c6e4a93600d2a71939",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
