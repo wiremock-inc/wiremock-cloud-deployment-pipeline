@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:public-catalogue-owner",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:tags-not-models",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
