@@ -19,8 +19,8 @@
     "name": "mothership",
     "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.590.0",
     "metadata": {
-      "sourceAction": "set",
-      "sourceCommit": "manually"
+      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4375280845",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/4dc362ec012c40d0395474bdeade7b907aee3b6d"
     }
   },
   {
