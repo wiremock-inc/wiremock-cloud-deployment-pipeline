@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:wiremock-3-upgrade",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.64.0",
     "metadata": {
-      "sourceAction": "set",
-      "sourceCommit": "manually"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/4408216144",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/8f28d6cf4f9dff9f6b3a18417e462beb08b2d535"
     }
   },
   {
@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.110.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:wiremock-3-upgrade",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/4405417841",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/7427602a5b5716e373dd6ba6b00d1f2366ce7b34"
+      "sourceAction": "manual",
+      "sourceCommit": "manual"
     }
   },
   {
