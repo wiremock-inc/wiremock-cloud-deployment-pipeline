@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.110.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.111.0",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/4405417841",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/7427602a5b5716e373dd6ba6b00d1f2366ce7b34"
+      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/4437095328",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/685f6f4eb53bc6669fa687862f954adc2bb18813"
     }
   },
   {
