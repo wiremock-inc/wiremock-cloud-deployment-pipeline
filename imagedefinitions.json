@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:f39357631d5e30fa3975eadf227564b6fd9f20dc640a9148c6df4e4a87a15330",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_path-templates",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
