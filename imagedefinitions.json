@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:master",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:add_base_path_as_import_parameter",
     "metadata": {
       "sourceAction": "set",
       "sourceCommit": "manually"
