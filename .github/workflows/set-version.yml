@@ -53,4 +53,4 @@ jobs:
           ref: ${{ github.event.inputs.branch }}
           token: ${{ secrets.SET_VERSION_TOKEN }}
 
-      - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} ${{ github.event.inputs.source_action }} ${{ github.event.inputs.source_commit }} ${{ github.event.inputs.force }}
+      - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} '${{ github.event.inputs.source_action }}' '${{ github.event.inputs.source_commit }}' ${{ github.event.inputs.force }}
