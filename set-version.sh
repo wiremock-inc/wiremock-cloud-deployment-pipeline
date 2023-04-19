@@ -13,6 +13,11 @@ main() {
   local source_commit=${4:-set manually}
   local force=${5:-false}
 
+  if [[ "$name" =~ ^(main|master)$ ]]; then
+    echo "Do not set a branch to $name - if you want to go back to following $name set it to the latest semantic version"
+    exit 1
+  fi
+
   local current_tag; current_tag="$(find_current_tag "$name")"
   echo "Current tag: $current_tag force: $force"
 
