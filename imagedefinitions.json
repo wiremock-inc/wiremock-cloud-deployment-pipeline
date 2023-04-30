@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:task-def-per-customer",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.161.0",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
