@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.638.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:hateoas-invitations",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4848637132",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/ba39034a3219529ff0d46f18fa6891d42626e3b3"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
