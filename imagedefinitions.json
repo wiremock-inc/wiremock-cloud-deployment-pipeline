@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.642.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:365-APIs-Templates-configurable-as-Open-API",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4872964632",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/838d93a0e61c7619585b206bf45fe11b81805667"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
