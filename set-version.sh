@@ -13,8 +13,8 @@ main() {
   local source_commit=${4:-set manually}
   local force=${5:-false}
 
-  if [[ "$name" =~ ^(main|master)$ ]]; then
-    echo "Do not set a branch to $name - if you want to go back to following $name set it to the latest semantic version"
+  if [[ "$image_uri" =~ ^(main|master)$ ]]; then
+    echo "Do not set a branch to $image_uri - if you want to go back to following $image_uri set it to the latest semantic version"
     exit 1
   fi
 
