@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.653.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:better-route53-diagnostics",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/4980902730",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/f9002b65a9319bc2306b6efe52d9710d8c5a09f9"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
