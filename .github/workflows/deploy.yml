@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - uses: aws-actions/configure-aws-credentials@v1-node16
+      - uses: aws-actions/configure-aws-credentials@v2.1.0
         with:
           role-to-assume: arn:aws:iam::499333472133:role/GitHub-CDK-Deploy
           aws-region: us-east-1
