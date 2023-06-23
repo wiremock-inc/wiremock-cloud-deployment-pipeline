@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_538-logical-not-matcher-in-the-ui",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_537-form-parameter-matching",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
