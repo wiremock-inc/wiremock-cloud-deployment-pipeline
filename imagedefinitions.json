@@ -1,10 +1,10 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:add_separate_segment_public_access_token",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.179.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/5474504173",
+      "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/058a5428e4f7bd1cc0193bb4a0d95837bf17d06b"
     }
   },
   {
