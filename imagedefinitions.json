@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_429-ui-styling-of-stub-pagination-looks-broken",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fetch-oidc-config",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
