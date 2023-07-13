@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.181.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:ui-port-8080",
     "metadata": {
       "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/5509546621",
       "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/a61afaedb8cbb4f12595c866bf23c9c8d855e953"
@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.728.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:run-as-non-root",
     "metadata": {
       "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/5506692879",
       "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/3b711f33cad1700e08216caa8c4e7c636edb4d83"
