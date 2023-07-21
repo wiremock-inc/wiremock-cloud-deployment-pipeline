@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_561-improve-visibility-of-most-used-api-templates-when-creating-a-new-mock",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_431-filter-stub-list-on-the-server",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
