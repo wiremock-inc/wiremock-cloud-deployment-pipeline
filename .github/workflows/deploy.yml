@@ -33,7 +33,7 @@ jobs:
       - run: ./deploy.sh wiremock-cloud-${{ inputs.environment }}
 
       - name: Run Datadog Synthetics tests
-        uses: DataDog/synthetics-ci-github-action@v0.15.0
+        uses: DataDog/synthetics-ci-github-action@v0.16.0
         with:
           api_key: ${{secrets.DD_SYNTHETIC_TESTS_API_KEY}}
           app_key: ${{secrets.DD_SYNTHETIC_TESTS_APP_KEY}}
