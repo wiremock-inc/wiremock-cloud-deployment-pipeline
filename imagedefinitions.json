@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:fis-open-api-import-fixes",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:feature/612-avoid-cycle-openapi-stubs-openapi",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
