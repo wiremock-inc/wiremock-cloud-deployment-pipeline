@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_dont-reload-when-saving-stub",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.180.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/5789755551",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/0254c8d78838b164bff623b9b908e384c4044191"
     }
   },
   {
