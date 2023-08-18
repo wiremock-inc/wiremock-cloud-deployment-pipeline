@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:segment-server-side-events",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_622-upload-wiremock-stub-directory-fails",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
