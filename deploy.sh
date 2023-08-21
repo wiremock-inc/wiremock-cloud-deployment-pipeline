@@ -36,7 +36,7 @@ do_deploy() {
 
   echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
 
-  docker run --rm \
+  docker run --quiet --rm \
       -e AWS_DEFAULT_REGION \
       -e AWS_REGION \
       -e AWS_ACCESS_KEY_ID \
