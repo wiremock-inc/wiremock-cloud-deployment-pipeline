@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:fix_stub_change_not_reflected_in_openapi",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:enhance_migrated_users_engagement_id_list",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
