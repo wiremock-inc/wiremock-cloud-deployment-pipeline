@@ -12,3 +12,10 @@ jobs:
     with:
       environment: dev
     secrets: inherit
+
+  deploy-dev-mock-hosts:
+    needs: deploy-dev
+    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy-mock-hosts.yml@main
+    with:
+      environment: dev
+    secrets: inherit
