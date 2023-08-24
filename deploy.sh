@@ -3,7 +3,11 @@
 set -euo pipefail
 
 main() {
-  local stack=$1
+  local product=$1
+  local environment=$2
+  local to_deploy=${3:-cdk}
+
+  local stack="$product-$environment"
 
   local cdk_image; cdk_image=$(get_image cdk)
   # check that someone hasn't just sent us some random image to execute with our AWS creds...
@@ -12,12 +16,17 @@ main() {
     exit 1
   fi
 
-  local ui_image; ui_image=$(get_image ui)
-  local mothership_image; mothership_image=$(get_image mothership)
   local mock_host_image; mock_host_image=$(get_image mock-host)
-  local admin_image; admin_image=$(get_image admin)
+  if [[ $to_deploy == cdk ]]; then
 
-  do_deploy "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}"
+    local ui_image; ui_image=$(get_image ui)
+    local mothership_image; mothership_image=$(get_image mothership)
+    local admin_image; admin_image=$(get_image admin)
+
+    deploy_cdk "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}"
+  else
+    deploy_mock_hosts "$cdk_image" "$product" "$environment" "${mock_host_image#*:}"
+  fi
 }
 
 get_image() {
@@ -26,7 +35,7 @@ get_image() {
   jq -r '.[] | select(.name=="'"$name"'") | .imageUri' imagedefinitions.json
 }
 
-do_deploy() {
+deploy_cdk() {
   local cdk_image=$1
   local stack=$2
   local ui_image_tag=$3
@@ -36,13 +45,7 @@ do_deploy() {
 
   echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
 
-  docker run --quiet --rm \
-      -e AWS_DEFAULT_REGION \
-      -e AWS_REGION \
-      -e AWS_ACCESS_KEY_ID \
-      -e AWS_SECRET_ACCESS_KEY \
-      -e AWS_SESSION_TOKEN \
-      --mount "type=bind,src=${PWD}/imagedefinitions.json,target=/etc/imagedefinitions.json" \
+  docker_run \
       "$cdk_image" \
       deploy "$stack" \
       --require-approval never \
@@ -50,6 +53,32 @@ do_deploy() {
       --parameters mothershipImageTag="$mothership_image_tag" \
       --parameters mockHostImageTag="$mock_host_image_tag" \
       --parameters adminImageTag="$admin_image_tag"
+}
+
+deploy_mock_hosts() {
+  local cdk_image=$1
+  local product=$2
+  local environment=$3
+  local mock_host_image_tag=$4
+
+  echo "Deploying mock host $mock_host_image_tag using cdk ${cdk_image#*:}"
+
+  docker_run \
+      --entrypoint deploy_mock_hosts.sh
+      "$cdk_image" \
+      "$product" \
+      "$environment" \
+      "$mock_host_image_tag"
+}
+
+docker_run() {
+  docker run --quiet --rm \
+    -e AWS_DEFAULT_REGION \
+    -e AWS_REGION \
+    -e AWS_ACCESS_KEY_ID \
+    -e AWS_SECRET_ACCESS_KEY \
+    -e AWS_SESSION_TOKEN \
+    "$@"
 }
 
 main "$@"
