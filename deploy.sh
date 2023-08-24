@@ -64,7 +64,7 @@ deploy_mock_hosts() {
   echo "Deploying mock host $mock_host_image_tag using cdk ${cdk_image#*:}"
 
   docker_run \
-      --entrypoint deploy_mock_hosts.sh
+      --entrypoint deploy_mock_hosts.sh \
       "$cdk_image" \
       "$product" \
       "$environment" \
