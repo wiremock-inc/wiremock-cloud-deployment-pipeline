@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_640-show-diff-reports-in-the-request-log",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_86-logical-and-or-matchers-in-ui",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
