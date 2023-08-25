@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.224.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:639-change-admin-extensions-url-structure-in-mock-host",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/5979448922",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/e91fe4b00d3ec21693034215f078e9b719cb5bde"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
