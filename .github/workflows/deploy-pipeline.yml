@@ -17,6 +17,7 @@ jobs:
     needs: deploy-qa
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy-mock-hosts.yml@main
     with:
+      github-environment: qa
       environment: qa
     secrets: inherit
 
@@ -29,7 +30,8 @@ jobs:
 
   deploy-live-mock-hosts:
     needs: deploy-live
-    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
+    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy-mock-hosts.yml@main
     with:
-      environment: live-mock-hosts
+      github-environment: live-mock-hosts
+      environment: live
     secrets: inherit

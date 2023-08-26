@@ -17,5 +17,6 @@ jobs:
     needs: deploy-dev
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy-mock-hosts.yml@main
     with:
+      github-environment: dev
       environment: dev
     secrets: inherit
