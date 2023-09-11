@@ -17,18 +17,18 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:639-change-admin-extensions-url-structure-in-mock-host",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.787.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/6146117251",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/c694ed749eb92c923a1c6d77ebda139fb32d4639"
     }
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:639-change-admin-extensions-url-structure-in-mock-host",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.243.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/mocklab/mocklab-mock-host/actions/runs/6146153093",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mock-host/tree/b1e37b927b8d931f4a8b25735f24dcb5b5c0fb09"
     }
   },
   {
