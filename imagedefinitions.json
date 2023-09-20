@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:generate_one_specific_stub_per_oas_response_example_plus_one_generic",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:fis_test",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
