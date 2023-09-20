@@ -53,6 +53,8 @@ deploy_cdk() {
       --parameters mothershipImageTag="$mothership_image_tag" \
       --parameters mockHostImageTag="$mock_host_image_tag" \
       --parameters adminImageTag="$admin_image_tag"
+
+  tag_deployment "$stack"
 }
 
 deploy_mock_hosts() {
@@ -69,6 +71,10 @@ deploy_mock_hosts() {
       "$product" \
       "$environment" \
       "$mock_host_image_tag"
+
+  local stack="$product-$environment"
+
+  tag_deployment "$stack"
 }
 
 docker_run() {
@@ -79,6 +85,15 @@ docker_run() {
     -e AWS_SECRET_ACCESS_KEY \
     -e AWS_SESSION_TOKEN \
     "$@"
+}
+
+tag_deployment() {
+  local stack=$1
+
+  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+  git config --local user.name "github-actions[bot]"
+  git tag "deployed-$stack-$(date -u +%Y-%m-%dT%H-%MZ)"
+  git push --tags
 }
 
 main "$@"
