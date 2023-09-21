@@ -12,7 +12,7 @@ main() {
 
   local current_ref; current_ref=$(git symbolic-ref --short HEAD)
 
-  git pull --tags -q
+  git fetch --tags -q
   local latest_deployment; latest_deployment="$(get_latest_deployment 'deployed-wiremock-cloud-live-2*')"
 
   git checkout "$latest_deployment" -q
