@@ -7,6 +7,11 @@ on:
       - main
 
 jobs:
+  create-release-notes:
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./create-release-notes.sh live
+
   deploy-qa:
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
     with:
