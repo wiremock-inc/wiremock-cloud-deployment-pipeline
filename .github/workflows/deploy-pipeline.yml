@@ -12,8 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./create-release-notes.sh live
-        with:
-          github-token: ${{ secrets.SET_VERSION_TOKEN }}
 
   deploy-qa:
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
