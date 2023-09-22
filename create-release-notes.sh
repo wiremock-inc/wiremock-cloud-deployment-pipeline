@@ -17,7 +17,7 @@ main() {
 
   git checkout "$latest_deployment" -q
 
-  echo "Previous deployment was [$latest_deployment](https://github.com/wiremock/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD)"
+  echo "Previous deployment was [$latest_deployment](https://github.com/wiremock/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD))"
 
   local previous_cdk_image; previous_cdk_image=$(get_image cdk)
   local previous_mothership_image; previous_mothership_image=$(get_image mothership)
@@ -36,7 +36,7 @@ main() {
   echo
   get_release_notes \
     "UI" \
-    "mocklab/mocklab-ui.git" \
+    "mocklab/mocklab-ui" \
     "${previous_ui_image#*:}" \
     "${ui_image#*:}"
 
