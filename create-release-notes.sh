@@ -7,7 +7,7 @@ main() {
   local cdk_image; cdk_image=$(get_image cdk)
   local mothership_image; mothership_image=$(get_image mothership)
   local ui_image; ui_image=$(get_image ui)
-  local mock_host_image; mock_host_image=$(get_image mock-host)
+#  local mock_host_image; mock_host_image=$(get_image mock-host)
   local admin_image; admin_image=$(get_image admin)
 
   local current_ref; current_ref=$(git symbolic-ref --short HEAD)
@@ -23,7 +23,7 @@ main() {
   local previous_cdk_image; previous_cdk_image=$(get_image cdk)
   local previous_mothership_image; previous_mothership_image=$(get_image mothership)
   local previous_ui_image; previous_ui_image=$(get_image ui)
-  local previous_mock_host_image; previous_mock_host_image=$(get_image mock-host)
+#  local previous_mock_host_image; previous_mock_host_image=$(get_image mock-host)
   local previous_admin_image; previous_admin_image=$(get_image admin)
 
   git checkout "$current_ref" -q
