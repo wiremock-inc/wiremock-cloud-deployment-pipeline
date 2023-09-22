@@ -21,6 +21,17 @@ jobs:
             ${{ secrets.UI_DEPLOY_KEY }}
       - run: ./create-release-notes.sh live >> $GITHUB_STEP_SUMMARY
 
+  create-mock-host-release-notes:
+    needs: create-release-notes
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: |
+            ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
+      - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
+
   deploy-qa:
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
     with:
@@ -42,7 +53,7 @@ jobs:
       environment: live
     secrets: inherit
 
-  create-mock-host-release-notes:
+  update-mock-host-release-notes:
     needs: deploy-live
     runs-on: ubuntu-20.04
     steps:
