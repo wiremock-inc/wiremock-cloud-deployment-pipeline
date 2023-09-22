@@ -17,7 +17,7 @@ main() {
 
   git checkout "$latest_deployment" -q
 
-  echo "Previous deployment was [${latest_deployment#*deployed-wiremock-cloud-live-}](https://github.com/wiremock/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD))"
+  echo "Previous deployment was [${latest_deployment#*deployed-wiremock-cloud-live-}](https://github.com/wiremock/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD)/checks)"
   echo
 
   local previous_cdk_image; previous_cdk_image=$(get_image cdk)
