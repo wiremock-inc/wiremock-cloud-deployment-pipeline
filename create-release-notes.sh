@@ -17,6 +17,8 @@ main() {
 
   git checkout "$latest_deployment" -q
 
+  echo "Previous deployment was [$latest_deployment](https://github.com/wiremock/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD)"
+
   local previous_cdk_image; previous_cdk_image=$(get_image cdk)
   local previous_mothership_image; previous_mothership_image=$(get_image mothership)
   local previous_ui_image; previous_ui_image=$(get_image ui)
@@ -27,28 +29,21 @@ main() {
 
   get_release_notes \
     "Mothership" \
-    "git@github.com:mocklab/mocklab-mothership.git" \
+    "mocklab/mocklab-mothership" \
     "${previous_mothership_image#*:}" \
     "${mothership_image#*:}"
 
   echo
   get_release_notes \
     "UI" \
-    "git@github.com:mocklab/mocklab-ui.git" \
+    "mocklab/mocklab-ui.git" \
     "${previous_ui_image#*:}" \
     "${ui_image#*:}"
 
   echo
   get_release_notes \
-    "Mock Host" \
-    "git@github.com:mocklab/mocklab-mock-host.git" \
-    "${previous_mock_host_image#*:}" \
-    "${mock_host_image#*:}"
-
-  echo
-  get_release_notes \
     "CDK" \
-    "git@github.com:wiremock/wiremock-cloud-infrastructure.git" \
+    "wiremock/wiremock-cloud-infrastructure" \
     "${previous_cdk_image#*:}" \
     "${cdk_image#*:}" \
     main
@@ -56,15 +51,13 @@ main() {
   echo
   get_release_notes \
     "Admin" \
-    "git@github.com:mocklab/mocklab-admin.git" \
+    "mocklab/mocklab-admin" \
     "${previous_admin_image#*:}" \
     "${admin_image#*:}"
 
-#  echo "cdk ${previous_cdk_image#*:}..${cdk_image#*:}"
-#  echo "mothership ${previous_mothership_image#*:}..${mothership_image#*:}"
-#  echo "ui ${previous_ui_image#*:}..${ui_image#*:}"
-#  echo "mock-host ${previous_mock_host_image#*:}..${mock_host_image#*:}"
-#  echo "admin ${previous_admin_image#*:}..${admin_image#*:}"
+  echo
+  echo "Mock Host skipped - it is deployed on a separate schedule."
+
 }
 
 get_latest_deployment() {
@@ -90,9 +83,9 @@ get_release_notes() {
     rm -rf /tmp/release_notes
     mkdir /tmp/release_notes
     cd /tmp/release_notes
-    git clone --filter=blob:none --no-checkout --depth 200 --single-branch --branch "$branch" "$repo" -q .
+    git clone --filter=blob:none --no-checkout --depth 200 --single-branch --branch "$branch" "git@github.com:$repo.git" -q .
 
-    echo "$name $start..$end"
+    echo "[$name](https://github.com/$repo) [$start](https://github.com/$repo/releases/tag/$start) -> [$end](https://github.com/$repo/releases/tag/$end)"
     git log --pretty="* %s" --first-parent "$start..$end"
     rm -rf /tmp/release_notes
   fi
