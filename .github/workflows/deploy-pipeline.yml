@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: |
+            ${{ secrets.ADMIN_DEPLOY_KEY }}
+            ${{ secrets.CDK_DEPLOY_KEY }}
+            ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
+            ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
+            ${{ secrets.UI_DEPLOY_KEY }}
       - run: ./create-release-notes.sh live
 
   deploy-qa:
