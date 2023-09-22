@@ -86,12 +86,13 @@ get_release_notes() {
   local branch=${5:-master}
 
   if [[ "$start" != "$end" ]]; then
-    echo "$name $start..$end"
 
     rm -rf /tmp/release_notes
     mkdir /tmp/release_notes
     cd /tmp/release_notes
     git clone --filter=blob:none --no-checkout --depth 200 --single-branch --branch "$branch" "$repo" -q .
+
+    echo "$name $start..$end"
     git log --pretty="* %s" --first-parent "$start..$end"
     rm -rf /tmp/release_notes
   fi

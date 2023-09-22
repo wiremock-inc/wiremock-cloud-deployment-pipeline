@@ -19,7 +19,7 @@ jobs:
             ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
             ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
             ${{ secrets.UI_DEPLOY_KEY }}
-      - run: ./create-release-notes.sh live
+      - run: ./create-release-notes.sh live >> $GITHUB_STEP_SUMMARY
 
   deploy-qa:
     uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
