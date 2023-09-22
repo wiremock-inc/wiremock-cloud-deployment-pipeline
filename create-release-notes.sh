@@ -87,7 +87,7 @@ get_release_notes() {
     git clone --filter=blob:none --no-checkout --depth 200 --single-branch --branch "$branch" "git@github.com:$repo.git" -q .
 
     echo "[$name](https://github.com/$repo) [$start](https://github.com/$repo/releases/tag/$start) -> [$end](https://github.com/$repo/releases/tag/$end)"
-    git log --pretty="* %s" --first-parent "$start..$end"
+    git log --pretty="* %s" --first-parent "$start..$end" | sed -E "s|\(#([0-9]+)\)|([#\1](https://github.com/$repo/pull/\1))|"
     rm -rf /tmp/release_notes
   fi
 }
