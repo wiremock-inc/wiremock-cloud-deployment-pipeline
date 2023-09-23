@@ -1,4 +1,4 @@
-name: Deploy to Environment
+name: Deploy Mock Hosts to Environment
 
 on:
   workflow_call:
