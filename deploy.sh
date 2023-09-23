@@ -74,7 +74,7 @@ deploy_mock_hosts() {
 
   local stack="$product-$environment"
 
-  tag_deployment "$stack"
+  tag_deployment "$stack-mock-hosts"
 }
 
 docker_run() {
