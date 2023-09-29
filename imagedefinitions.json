@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.197.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_86-logical-and-or-matchers-in-ui",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/6341078725",
-      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/d4e345a31f1359579b1e96973329a1fb5ffa8182"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
