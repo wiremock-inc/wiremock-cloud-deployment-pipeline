@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_nginx-headers",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:615518509c9bd28a4f7a0504ecc254d653ac3c14",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
