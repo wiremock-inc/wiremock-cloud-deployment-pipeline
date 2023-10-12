@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.821.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.822.0",
     "metadata": {
-      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/6494453811",
-      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/2798ef6f46a3b1bf86dd9d66a6a294917cedc115"
+      "sourceAction": "https://github.com/mocklab/mocklab-mothership/actions/runs/6497297397",
+      "sourceCommit": "https://github.com/mocklab/mocklab-mothership/tree/76ffa625f7b924c0cc90d62f8f4e0d6f2a6f66c9"
     }
   },
   {
