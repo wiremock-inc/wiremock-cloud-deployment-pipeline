@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_csp-headers",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.224.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/mocklab/mocklab-ui/actions/runs/6562208099",
+      "sourceCommit": "https://github.com/mocklab/mocklab-ui/tree/ee4a3a16a44b40f8e78c7f00ac418e2acffb4327"
     }
   },
   {
