@@ -9,18 +9,18 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.219.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.226.0",
     "metadata": {
-      "sourceAction": "Reverted manually",
-      "sourceCommit": "Reverted manually"
+      "sourceAction": "Roll forward manually",
+      "sourceCommit": "Roll forward manually"
     }
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.824.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.829.0",
     "metadata": {
-      "sourceAction": "Reverted manually",
-      "sourceCommit": "Reverted manually"
+      "sourceAction": "Roll forward manually",
+      "sourceCommit": "Roll forward manually"
     }
   },
   {
