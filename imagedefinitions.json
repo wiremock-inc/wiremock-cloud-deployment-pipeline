@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.226.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.221.0",
     "metadata": {
-      "sourceAction": "Roll forward manually",
-      "sourceCommit": "Roll forward manually"
+      "sourceAction": "Roll back manually",
+      "sourceCommit": "Roll back manually"
     }
   },
   {
