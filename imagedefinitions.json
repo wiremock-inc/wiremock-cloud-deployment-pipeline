@@ -1,10 +1,10 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.245.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:more-work-on-mock-host-role",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock/wiremock-cloud-infrastructure/actions/runs/6613400603",
-      "sourceCommit": "https://github.com/wiremock/wiremock-cloud-infrastructure/tree/c459d632132d48a26a3ef1a63e23d91f68a3a85b"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
