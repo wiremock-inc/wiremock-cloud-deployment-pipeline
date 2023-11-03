@@ -42,7 +42,7 @@ main() {
   echo
   get_release_notes \
     "CDK" \
-    "wiremock/wiremock-cloud-infrastructure" \
+    "wiremock-inc/wiremock-cloud-infrastructure" \
     "${previous_cdk_image#*:}" \
     "${cdk_image#*:}" \
     main
