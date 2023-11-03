@@ -22,7 +22,7 @@ main() {
 
   get_release_notes \
     "Mock Host" \
-    "mocklab/mocklab-mock-host" \
+    "wiremock-inc/mock-host" \
     "${previous_mock_host_image#*:}" \
     "${mock_host_image#*:}"
 }

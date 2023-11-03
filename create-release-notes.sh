@@ -28,14 +28,14 @@ main() {
 
   get_release_notes \
     "Mothership" \
-    "mocklab/mocklab-mothership" \
+    "wiremock-inc/mothership" \
     "${previous_mothership_image#*:}" \
     "${mothership_image#*:}"
 
   echo
   get_release_notes \
     "UI" \
-    "mocklab/mocklab-ui" \
+    "wiremock-inc/ui" \
     "${previous_ui_image#*:}" \
     "${ui_image#*:}"
 
@@ -50,7 +50,7 @@ main() {
   echo
   get_release_notes \
     "Admin" \
-    "mocklab/mocklab-admin" \
+    "wiremock-inc/admin" \
     "${previous_admin_image#*:}" \
     "${admin_image#*:}"
 }
