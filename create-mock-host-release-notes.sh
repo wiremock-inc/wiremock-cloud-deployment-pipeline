@@ -50,7 +50,7 @@ get_release_notes() {
     rm -rf /tmp/release_notes
     mkdir /tmp/release_notes
     cd /tmp/release_notes
-    echo "Cloning git@github.com:$repo.git"
+    >&2 echo "Cloning git@github.com:$repo.git"
     git clone --filter=blob:none --no-checkout --depth 200 --single-branch --branch "$branch" "git@github.com:$repo.git" -q .
 
     echo "[$name](https://github.com/$repo/compare/$start..$end) [$start](https://github.com/$repo/releases/tag/$start) -> [$end](https://github.com/$repo/releases/tag/$end)"
