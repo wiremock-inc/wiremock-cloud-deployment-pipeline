@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:784-do-not-rate-limit-requests-from-mock-host-to-mothership-at-the-waf",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:784-added-internal-api-to-privated-hosted-temporally",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
