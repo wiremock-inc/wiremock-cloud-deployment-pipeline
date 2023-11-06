@@ -1,10 +1,10 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.260.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:784-do-not-rate-limit-requests-from-mock-host-to-mothership-at-the-waf",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/actions/runs/6769852688",
-      "sourceCommit": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/tree/9638633a782f6c0e6c429f7765b718f18536e043"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
