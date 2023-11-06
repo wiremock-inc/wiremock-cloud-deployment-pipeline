@@ -40,4 +40,4 @@ jobs:
                 force: 'false',
               }
             })
-      - run: echo 'View the "Set ${{ inputs.name }} to ${{ inputs.tag }}" pipeline at https://github.com/wiremock/wiremock-cloud-deployment-pipeline/actions/workflows/deploy-pipeline.yml'
+      - run: echo 'View the "Set ${{ inputs.name }} to ${{ inputs.tag }}" pipeline at https://github.com/wiremock-inc/wiremock-cloud-deployment-pipeline/actions/workflows/deploy-pipeline.yml'

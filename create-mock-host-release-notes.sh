@@ -13,7 +13,7 @@ main() {
 
   git checkout "$latest_deployment" -q
 
-  echo "Previous Mock Host deployment was [${latest_deployment#*deployed-wiremock-cloud-live-mock-hosts-}](https://github.com/wiremock/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD)/checks)"
+  echo "Previous Mock Host deployment was [${latest_deployment#*deployed-wiremock-cloud-live-mock-hosts-}](https://github.com/wiremock-inc/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD)/checks)"
   echo
 
   local previous_mock_host_image; previous_mock_host_image=$(get_image mock-host)
