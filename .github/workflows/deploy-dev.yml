@@ -8,14 +8,14 @@ on:
 
 jobs:
   deploy-dev:
-    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
       environment: dev
     secrets: inherit
 
   deploy-dev-mock-hosts:
     needs: deploy-dev
-    uses: wiremock/wiremock-cloud-versions/.github/workflows/deploy-mock-hosts.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
     with:
       github-environment: dev
       environment: dev
