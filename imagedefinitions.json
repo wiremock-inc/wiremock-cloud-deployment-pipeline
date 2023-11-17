@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:openid-test-temp",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_google-img-src-csp",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
