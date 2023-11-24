@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:openid_roles_and_permitions_for_enterprise",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.864.0",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
