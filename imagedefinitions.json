@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.252.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:154-jwt-mock-api-authentication-public-private-key-signing",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
