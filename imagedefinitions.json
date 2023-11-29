@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.257.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_592-soft-request-validation-against-openapi",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7034758754",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/dc7f9d9fe11018bba5f730343f54602a553cefda"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
