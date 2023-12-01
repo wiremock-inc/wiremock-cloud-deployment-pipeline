@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:openapi-response-validation",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:openapi-request-validation-line-numbers",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
