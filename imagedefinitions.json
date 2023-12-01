@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:excessive-data-exposure-org-accounts",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:add-identity-validation-intercom",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
