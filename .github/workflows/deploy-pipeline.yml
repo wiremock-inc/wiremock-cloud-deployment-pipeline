@@ -47,7 +47,7 @@ jobs:
     secrets: inherit
 
   deploy-live:
-    needs: deploy-qa-mock-hosts
+    needs: [deploy-qa-mock-hosts, create-release-notes]
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
       environment: live
@@ -65,7 +65,7 @@ jobs:
       - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
 
   deploy-live-mock-hosts:
-    needs: deploy-live
+    needs: [deploy-live, update-mock-host-release-notes]
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
     with:
       github-environment: live-mock-hosts
