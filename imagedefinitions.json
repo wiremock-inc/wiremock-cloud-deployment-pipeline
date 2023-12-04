@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:portal_oauth_callback_suffix",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:portal_oauth_callback_suffix_2_no_merge",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
