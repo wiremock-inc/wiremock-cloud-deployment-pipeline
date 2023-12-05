@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:hmac-hash-by-email-address",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:injecting_portalbaseurl",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
