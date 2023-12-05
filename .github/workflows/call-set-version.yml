@@ -27,7 +27,7 @@ jobs:
           github-token: ${{ secrets.SET_VERSION_TOKEN }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
-              owner: 'wiremock',
+              owner: 'wiremock-inc',
               repo: 'wiremock-cloud-deployment-pipeline',
               workflow_id: 'set-version.yml',
               ref: 'main',
