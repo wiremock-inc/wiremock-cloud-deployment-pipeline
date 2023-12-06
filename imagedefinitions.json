@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.265.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_841-allow-user-to-escape-when-they-signin-with-a-different-identity-provider-with-the-same-email-address",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7113237713",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/d2177bd9971194445df6c186a04ad31af1417eb7"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
