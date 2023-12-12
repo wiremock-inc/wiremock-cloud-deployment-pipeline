@@ -33,10 +33,10 @@
   },
   {
     "name": "admin",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.90.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.91.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/admin/actions/runs/7178598129",
-      "sourceCommit": "https://github.com/wiremock-inc/admin/tree/3e2c76ac324bb2acae93309523b81e8151f6f59b"
+      "sourceAction": "https://github.com/wiremock-inc/admin/actions/runs/7181903193",
+      "sourceCommit": "https://github.com/wiremock-inc/admin/tree/08842bf4662af9155bd96603b2069f9c55f02e64"
     }
   }
 ]
