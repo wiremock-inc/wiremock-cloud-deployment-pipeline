@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:cookie_on_portal_domain",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:855-authorization-code-remains-in-the-address-bar-after-logging-into-the-portal",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
