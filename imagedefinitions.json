@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.281.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.282.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7232198188",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/b2dc3da996cf6070fee84816e225dddc41878500"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7232241827",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/75bc3afb3d9f6e8376e85353a49197bd847bce54"
     }
   },
   {
