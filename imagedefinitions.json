@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:669-signup-maintains-end-url",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.284.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7247172959",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/b8bcd105dc5ea3c2f25e6991d500bcf6d32dbd5d"
     }
   },
   {
