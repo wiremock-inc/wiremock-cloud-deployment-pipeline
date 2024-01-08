@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.297.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix/aws-query-param",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7445619875",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/09d4f75a043fafce47a4c1e16caa68797b9cebcb"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
