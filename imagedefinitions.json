@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.327.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:refactor_892-refactor-authentication-in-ui",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7714767536",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/68b3ea1c737b367312b571584dc4d8b3f2957723"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
