@@ -14,6 +14,11 @@ main() {
   local current_ref; current_ref=$(git symbolic-ref --short HEAD)
 
   git fetch --tags -q
+
+  >&2 echo 'output of git status :'
+  >&2 git status
+  >&2 echo 'output of git git tag -l "deployed-wiremock-cloud-live-2*" --sort -refname :'
+  >&2 git tag -l 'deployed-wiremock-cloud-live-2*' --sort -refname
   local latest_deployment; latest_deployment="$(get_latest_deployment 'deployed-wiremock-cloud-live-2*')"
 
   >&2 echo "Checking out latest deployment $latest_deployment"
