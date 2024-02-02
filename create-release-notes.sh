@@ -61,7 +61,7 @@ main() {
 
 git() {
   if ! command git "$@"; then
-    >&2 echo "got $? running git $*"
+    >&2 echo "Failed running git $*"
     exit 1
   fi
 }
