@@ -4,6 +4,8 @@ set -euo pipefail
 
 main() {
 
+  >&2 echo "Generating release notes"
+
   local cdk_image; cdk_image=$(get_image cdk)
   local mothership_image; mothership_image=$(get_image mothership)
   local ui_image; ui_image=$(get_image ui)
@@ -14,6 +16,7 @@ main() {
   git fetch --tags -q
   local latest_deployment; latest_deployment="$(get_latest_deployment 'deployed-wiremock-cloud-live-2*')"
 
+  >&2 echo "Checking out latest deployment $latest_deployment"
   git checkout "$latest_deployment" -q
 
   echo "Previous deployment was [${latest_deployment#*deployed-wiremock-cloud-live-}](https://github.com/wiremock-inc/wiremock-cloud-deployment-pipeline/commit/$(git rev-parse HEAD)/checks)"
@@ -24,6 +27,7 @@ main() {
   local previous_ui_image; previous_ui_image=$(get_image ui)
   local previous_admin_image; previous_admin_image=$(get_image admin)
 
+  >&2 echo "Checking out current ref $current_ref"
   git checkout "$current_ref" -q
 
   get_release_notes \
@@ -63,6 +67,8 @@ get_latest_deployment() {
 get_image() {
   local name=$1
 
+  >&2 echo "Getting image for $name"
+
   jq -r '.[] | select(.name=="'"$name"'") | .imageUri' imagedefinitions.json
 }
 
@@ -75,6 +81,8 @@ get_release_notes() {
 
   if [[ "$start" != "$end" ]]; then
 
+    >&2 echo "Building release notes for $name in $repo on branch $branch because $start != $end"
+
     rm -rf /tmp/release_notes
     mkdir /tmp/release_notes
     cd /tmp/release_notes
@@ -84,6 +92,8 @@ get_release_notes() {
     echo "[$name](https://github.com/$repo/compare/$start..$end) [$start](https://github.com/$repo/releases/tag/$start) -> [$end](https://github.com/$repo/releases/tag/$end)"
     git log --pretty="* %s" --first-parent "$start..$end" | sed -E "s|\(#([0-9]+)\)|([#\1](https://github.com/$repo/pull/\1))|"
     rm -rf /tmp/release_notes
+  else
+    >&2 echo "Skipping building release notes for $name in $repo on branch $branch because $start == $end"
   fi
 }
 
