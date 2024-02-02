@@ -59,6 +59,13 @@ main() {
     "${admin_image#*:}"
 }
 
+git() {
+  if ! command git "$@"; then
+    >&2 echo "got $? running git $*"
+    exit 1
+  fi
+}
+
 get_latest_deployment() {
   local pattern=$1
   git tag -l "$pattern" --sort -refname | head -n1
