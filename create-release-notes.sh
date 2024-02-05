@@ -17,9 +17,9 @@ main() {
 
   >&2 echo 'output of git status :'
   >&2 git status
-  >&2 echo 'output of git git tag -l "deployed-wiremock-cloud-live-2*" --sort -refname :'
-  >&2 git tag -l 'deployed-wiremock-cloud-live-2*' --sort -refname
-  local latest_deployment; latest_deployment="$(get_latest_deployment 'deployed-wiremock-cloud-live-2*')"
+  >&2 echo 'output of git tag -l "deployed-wiremock-cloud-live-2*" --sort -refname :'
+  >&2 get_latest_deployment
+  local latest_deployment; latest_deployment="$(get_latest_deployment)"
 
   >&2 echo "Checking out latest deployment $latest_deployment"
   git checkout "$latest_deployment" -q
@@ -72,8 +72,7 @@ git() {
 }
 
 get_latest_deployment() {
-  local pattern=$1
-  git tag -l "$pattern" --sort -refname | head -n1
+  git tag -l 'deployed-wiremock-cloud-live-2024-*' --sort=-refname | head -n1
 }
 
 get_image() {
