@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:919-export-limit-per-subscription-on-stub-exports",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.338.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/7787455854",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/b90fd3a24f8ed164457bc3e84c2900ddf4addd1b"
     }
   },
   {
@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:git-pull-get",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.465.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/7786815106",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/fee8390aca15ce2fda216081b98b0dbc7fc8b032"
     }
   },
   {
