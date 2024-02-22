@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1008.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:988-fix-identification-of-anon-users-in-hubspot-tracking",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/8003436082",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/a014eafc950de5aef82301bc87a094432d5edc86"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
