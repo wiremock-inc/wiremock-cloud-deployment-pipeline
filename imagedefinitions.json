@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:git-pull-conflicts",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.356.0",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
