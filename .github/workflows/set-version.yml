@@ -11,6 +11,7 @@ on:
         options:
           - dev
           - main
+          - simple-semver-reset
         default: dev
       name:
         type: choice
