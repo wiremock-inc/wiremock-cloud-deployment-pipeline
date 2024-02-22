@@ -14,8 +14,9 @@ main() {
   local force=${5:-false}
 
   if [[ "$image_uri" =~ ^(main|master)$ ]]; then
-    echo "Do not set a branch to $image_uri - if you want to go back to following $image_uri set it to the latest semantic version"
-    exit 1
+    echo "$image_uri branch supplied - using the latest semver tag"
+    # pretty weak pattern for detecting semver tags, but should be good enough.
+    image_uri=$(git describe --match='[0-9]*.[0-9]*.[0-9]*' --exclude='*[^0-9.]*' --abbrev=0)
   fi
 
   local current_tag; current_tag="$(find_current_tag "$name")"
