@@ -92,7 +92,7 @@ tag_deployment() {
 
   git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
   git config --local user.name "github-actions[bot]"
-  git tag "deployed-$stack-$(date -u +%Y-%m-%dT%H-%M%SZ)"
+  git tag "deployed-$stack-$(date -u +%Y-%m-%dT%H-%M-%SZ)"
   git push --tags
 }
 
