@@ -1,18 +1,18 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:complet-encrypt-superset-db",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.322.0",
     "metadata": {
-      "sourceAction": "set manually by rob & lee",
-      "sourceCommit": "set manually by rob & lee"
+      "sourceAction": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/actions/runs/8155867916",
+      "sourceCommit": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/tree/051db535514fb89bffb72407f11fa2e6f28fd209"
     }
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:refactor_acl-api",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.368.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8155351024",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/79a0caed88aa03dfcdc8c6561ef1f1642a357b27"
     }
   },
   {
