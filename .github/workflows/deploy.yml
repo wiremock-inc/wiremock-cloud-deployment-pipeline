@@ -39,4 +39,4 @@ jobs:
         with:
           api_key: ${{secrets.DD_SYNTHETIC_TESTS_API_KEY}}
           app_key: ${{secrets.DD_SYNTHETIC_TESTS_APP_KEY}}
-          test_search_query: 'env:${{ inputs.environment }}'
+          test_search_query: 'env:${{ inputs.environment }} state:live'
