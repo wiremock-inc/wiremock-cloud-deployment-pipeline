@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:encrypt-mothership-db",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:use-encrypted-mothership-db",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
