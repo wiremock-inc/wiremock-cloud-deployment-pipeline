@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.369.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_985-post-signup-form-collecting-additional-user-information",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8230561044",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/790862a7215eb2aca691c69e02c369d8a88c58f4"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
