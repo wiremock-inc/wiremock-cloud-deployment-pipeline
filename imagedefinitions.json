@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1018-openapi-generation-from-stubs-should-include-query-parameters",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.509.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/8233518957",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/451ac9b0551cc244dca1b529b49732c765ccd7ff"
     }
   },
   {
