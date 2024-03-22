@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:after_removed_parameters",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:1064-a-user-should-be-able-to-remove-a-data-source-from-a-stub",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
