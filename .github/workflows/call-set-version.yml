@@ -12,9 +12,6 @@ on:
       branch:
         required: true
         type: string
-    secrets:
-      SET_VERSION_TOKEN:
-        required: true
 
 permissions: write-all
 
@@ -22,9 +19,16 @@ jobs:
   trigger-deployment:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: 862323
+          private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
       - uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.SET_VERSION_TOKEN }}
+          github-token: ${{ steps.generate-token.outputs.token }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: 'wiremock-inc',
