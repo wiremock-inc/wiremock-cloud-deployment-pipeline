@@ -15,8 +15,14 @@ jobs:
         uses: dependabot/fetch-metadata@v2.0.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: 862323
+          private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --rebase --auto "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.AUTOMERGE_TOKEN}}
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
