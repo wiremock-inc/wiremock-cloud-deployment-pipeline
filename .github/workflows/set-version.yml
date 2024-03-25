@@ -48,9 +48,17 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
 
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: 862323
+          private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.branch }}
-          token: ${{ secrets.SET_VERSION_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
 
       - run: ./set-version.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.image_uri }} '${{ github.event.inputs.source_action }}' '${{ github.event.inputs.source_commit }}' ${{ github.event.inputs.force }}
