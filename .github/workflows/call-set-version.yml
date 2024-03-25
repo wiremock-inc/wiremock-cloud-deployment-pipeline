@@ -25,6 +25,7 @@ jobs:
         with:
           app-id: 862323
           private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
       - uses: actions/github-script@v7
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
