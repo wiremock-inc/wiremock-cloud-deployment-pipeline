@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_986-empty-states-for-key-functionality",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.408.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8451297619",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/f2138959c2461d273bf2cb925573c0863e7c9ec4"
     }
   },
   {
