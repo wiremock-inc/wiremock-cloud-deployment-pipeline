@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1069-apply-data-source-limits-usage-page",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1078.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/8465379553",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/0a110c91fe88cdcd76de622a1e4a176d2add1f5f"
     }
   },
   {
