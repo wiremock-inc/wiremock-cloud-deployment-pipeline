@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.419.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_1063-data-source-management-configurable-column-metadata",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8471581704",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/628a373b79dc241b84e3d316edf4769b05013cc7"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
