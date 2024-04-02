@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feature_1063-data-source-management-configurable-column-metadata",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.420.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8504033746",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/d55d9cb0e21e1d9fceeb85afba09dca8c5459673"
     }
   },
   {
@@ -33,10 +33,10 @@
   },
   {
     "name": "admin",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:reorganise-user-details",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.109.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/admin/actions/runs/8527263056",
+      "sourceCommit": "https://github.com/wiremock-inc/admin/tree/eb78fe33dde40a2cd00458f10efde485d213c44c"
     }
   }
 ]
