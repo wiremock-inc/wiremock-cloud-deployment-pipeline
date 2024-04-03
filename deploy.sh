@@ -46,6 +46,7 @@ deploy_cdk() {
   echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
 
   docker_run \
+      --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
       "$cdk_image" \
       deploy "$stack" \
       --require-approval never \
