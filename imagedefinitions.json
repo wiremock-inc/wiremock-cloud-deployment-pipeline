@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.546.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1069-apply-data-source-limits-disabled-data-not-sent-to-mock-host",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/8568553102",
-      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/b1ac9ad873cd99d3e52317c59710e616a57cbe3b"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
