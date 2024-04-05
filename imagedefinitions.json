@@ -17,18 +17,18 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1069-apply-data-source-limits-disabled-data-not-sent-to-mock-host",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1090.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/8568214183",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/172c4eb5247dffc2136435275852907cb07ccd23"
     }
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1069-apply-data-source-limits-disabled-data-not-sent-to-mock-host",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.547.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/8571736162",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/b05a09262eb5d331fd48008620d5f84ec6aab0b0"
     }
   },
   {
