@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_1108-stub-summary-shows-badge-if-it-uses-a-data-source",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:1075-paginate-data-source-list",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
