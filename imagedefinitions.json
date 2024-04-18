@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.456.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_1130-login-loop-when-scope-is-incorrect",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8743997209",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/e22194238e7dcd6dc2d8461035bf6772884cb6d9"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
