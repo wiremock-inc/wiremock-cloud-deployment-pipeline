@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.349.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:open-telemetry",
     "metadata": {
       "sourceAction": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/actions/runs/8708211970",
       "sourceCommit": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/tree/6bf6d516efa448a2b13ae8694f9d61fbf882f720"
@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1116.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:open-telemetry",
     "metadata": {
       "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/8778860786",
       "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/712b79be9e9717707be803cd2d472c58ff49f27c"
