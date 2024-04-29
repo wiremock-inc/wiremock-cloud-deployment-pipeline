@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:api-template-catalogue-index",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:refactor-key-store",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
