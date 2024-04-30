@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.471.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:use-standard-revocation-format",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/8892425683",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/1535bc729d087ce1e8b1b8984ebf0b9d5fdbd52b"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
