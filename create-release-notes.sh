@@ -72,7 +72,7 @@ git() {
 }
 
 get_latest_deployment() {
-  git tag -l 'deployed-wiremock-cloud-live-2024-*' --sort=-refname | head -n1
+  git tag -l 'deployed-wiremock-cloud-live-20*' --sort=-refname | head -n1
 }
 
 get_image() {
