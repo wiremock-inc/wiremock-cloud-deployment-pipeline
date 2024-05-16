@@ -66,7 +66,7 @@ main() {
 
 git() {
   if ! command git "$@"; then
-    local result; result=$?
+    local result=$?
     >&2 echo "Got exit status $result running git $*"
     exit "$result"
   fi
