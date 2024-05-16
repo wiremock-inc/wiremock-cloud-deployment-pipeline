@@ -17,8 +17,6 @@ main() {
 
   >&2 echo 'output of git status :'
   >&2 git status
-  >&2 echo "output of git tag -l 'deployed-wiremock-cloud-live-2024-*' --sort=-refname | head -n1 :"
-  >&2 get_latest_deployment
   local latest_deployment; latest_deployment="$(get_latest_deployment)"
 
   >&2 echo "Checking out latest deployment $latest_deployment"
@@ -65,10 +63,11 @@ main() {
 }
 
 git() {
-  if ! command git "$@"; then
+  >&2 echo "Running git $*"
+  if ! command git "$@" | tee >(cat 1>&2); then
     local result=$?
     >&2 echo "Got exit status $result running git $*"
-    exit "$result"
+    exit 1
   fi
 }
 
