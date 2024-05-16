@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1182.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:add-permissions-to-existing-keys",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9101381564",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/e00fee5cb07010cb23a8a02ba03e2869f26153f4"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
