@@ -9,18 +9,18 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.508.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.510.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/9364816081",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/ed437123dcbfb65b9f3b7db1fbf591c93559b006"
+      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/9371374868",
+      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/34583a9530a9913f71ffd4749fbada2d5d543e27"
     }
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1233.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1236.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9364681778",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/c46d195824ea69a03423e8f0ad5f23a3a03c15a0"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9371373957",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/8e4ff6feaab550172ac41ee1d332de9832fb7e3e"
     }
   },
   {
