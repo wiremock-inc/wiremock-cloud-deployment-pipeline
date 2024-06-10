@@ -25,7 +25,7 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:add-tojson-helper",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1261-rename-put-state-operation-to-set",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
