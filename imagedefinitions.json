@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:efficient-data-storage",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1242.0",
     "metadata": {
-      "sourceAction": "set by rob",
-      "sourceCommit": "set by rob"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9484498501",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/d72619c3a8d122e70bf3cd740a67f403f96f8045"
     }
   },
   {
