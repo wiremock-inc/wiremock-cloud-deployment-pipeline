@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1247.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1248.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9542065317",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/f9cdc1a41adfedf370fad9c5bf9b2e0e3302f3b1"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9549983307",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/e8c8851b63c1f40e3ae772baf18e4c8af18ba456"
     }
   },
   {
