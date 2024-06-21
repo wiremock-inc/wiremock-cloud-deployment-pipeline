@@ -1,23 +1,40 @@
 name: Redeploy Dev
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       name:
+        type: choice
+        description: The service to update
         required: true
-        type: string
+        options:
+          - ui
+          - mothership
+          - cdk
+          - mock-host
+          - admin
       tag_name:
-        required: true
         type: string
+        description: The tag of the remote image
+        required: true
 
 jobs:
-  update-dev:
+  redeploy-dev:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: 862323
+          private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
 
       - uses: actions/checkout@v4
         with:
           ref: dev
+          token: ${{ steps.generate-token.outputs.token }}
 
       - uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
