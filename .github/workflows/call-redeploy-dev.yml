@@ -1,0 +1,39 @@
+name: Call Set Version
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      tag_name:
+        required: true
+        type: string
+
+permissions: write-all
+
+jobs:
+  trigger-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: 862323
+          private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'wiremock-inc',
+              repo: 'wiremock-cloud-deployment-pipeline',
+              workflow_id: 'redeploy-dev.yml',
+              ref: 'main',
+              inputs: {
+                name: '${{ inputs.name }}',
+                tag_name: '${{ inputs.tag_name }}'
+              }
+            })
