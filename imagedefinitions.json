@@ -25,10 +25,10 @@
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.704.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.705.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/9616727421",
-      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/579a22b2762c8a31a01d811b469daf633a19dead"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/9616953571",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/44f3ec03982598ebe920ad4b26af78052c621db5"
     }
   },
   {
