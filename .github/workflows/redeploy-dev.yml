@@ -1,0 +1,27 @@
+name: Redeploy Dev
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      tag_name:
+        required: true
+        type: string
+
+jobs:
+  update-dev:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - uses: aws-actions/configure-aws-credentials@v4.0.2
+        with:
+          role-to-assume: arn:aws:iam::499333472133:role/GitHub-CDK-Deploy
+          aws-region: us-east-1
+
+      - run: ./redeploy-dev.sh ${{ github.event.inputs.name }} ${{ github.event.inputs.tag_name }}
