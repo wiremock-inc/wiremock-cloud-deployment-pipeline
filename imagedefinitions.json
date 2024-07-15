@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1287.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:bookin-com-apis",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/9937235863",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/ed377424fa6dacd00b5fc667d40e0d9bfe1681ab"
+      "sourceAction": "set manually by Rob",
+      "sourceCommit": "set manually by Rob"
     }
   },
   {
