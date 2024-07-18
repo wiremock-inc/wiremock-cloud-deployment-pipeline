@@ -42,7 +42,7 @@ jobs:
     needs: deploy-qa
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
     with:
-      github-environment: qa-mock-hosts
+      github-environment: qa
       environment: qa
     secrets: inherit
 
