@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1306.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:mock-host-proxy-auth-translation",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/10139536930",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/150ba7663c15de8ea89acd17c32bd3fdc375d5c4"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
