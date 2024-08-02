@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:prepopulate-signup-email-address",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_1405-investigate-auth-failure",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
