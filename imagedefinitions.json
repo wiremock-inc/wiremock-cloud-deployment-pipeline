@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:mock-hoost-private-nat-gateway-2",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.402.0",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
