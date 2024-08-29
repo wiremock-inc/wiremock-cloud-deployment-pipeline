@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_1449-git-test-connection-and-pull-buttons-do-not-turn-green-on-success",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.634.0",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
