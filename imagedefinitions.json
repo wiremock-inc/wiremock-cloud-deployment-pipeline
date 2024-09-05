@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.651.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_1328-grpc-test-requester",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/10685909386",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/52edd7927483c7d85ddb4fbe58fc50085225e7d1"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
