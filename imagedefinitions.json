@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.686.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_1526-90-day-free-user-survey",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/10922102018",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/a5474313889cfee72ace96a820847ba469562011"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
