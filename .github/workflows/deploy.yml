@@ -42,7 +42,7 @@ jobs:
         with:
           mask-password: 'true'
 
-      - run: ./deploy.sh wiremock-cloud ${{ inputs.environment }} cdk ${{ inputs.subdomain }}
+      - run: ./deploy.sh wiremock-cloud ${{ inputs.environment }} cdk ${{ inputs.subdomain }} ${{ input.region }}
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v1.11.0
