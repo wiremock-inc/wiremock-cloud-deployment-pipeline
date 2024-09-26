@@ -35,7 +35,9 @@ jobs:
   deploy-qa:
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
+      github-environment: qa
       environment: qa
+      subdomain: qa
     secrets: inherit
 
   deploy-qa-mock-hosts:
@@ -50,7 +52,9 @@ jobs:
     needs: [deploy-qa-mock-hosts, create-release-notes]
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
+      github-environment: live
       environment: live
+      subdomain: ''
     secrets: inherit
 
   update-mock-host-release-notes:
