@@ -9,15 +9,13 @@ on:
       github-environment:
         required: true
         type: string
-        default: ${{ inputs.environment }}
       region:
         required: false
         type: string
         default: 'us-east-1'
       subdomain:
-        required: false
+        required: true
         type: string
-        default: ${{ inputs.environment }}
     secrets:
       ENV_SPECIFIC_SECRET:
         required: true
