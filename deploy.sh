@@ -47,7 +47,7 @@ deploy_cdk() {
   local admin_image_tag=$6
   local subdomain=$7
 
-  echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
+  echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image}"
 
   docker_run \
       --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
