@@ -9,6 +9,10 @@ on:
       environment:
         required: true
         type: string
+      region:
+        required: false
+        type: string
+        default: 'us-east-1'
     secrets:
       ENV_SPECIFIC_SECRET:
         required: true
@@ -29,7 +33,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
           role-to-assume: arn:aws:iam::499333472133:role/GitHub-CDK-Deploy
-          aws-region: us-east-1
+          aws-region: ${{ inputs.region }}
 
       - uses: aws-actions/amazon-ecr-login@v2
         with:

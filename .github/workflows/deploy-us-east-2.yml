@@ -1,0 +1,24 @@
+name: Deploy to backup region (us-east-2)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy-to-backup-region:
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
+    with:
+      environment: live
+      region: 'us-east-2'
+    secrets: inherit
+
+  deploy-mock-hosts-to-backup-region:
+    needs: deploy-to-backup-region
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
+    with:
+      github-environment: live
+      environment: live
+      region: 'us-east-2'
+    secrets: inherit
