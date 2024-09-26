@@ -6,6 +6,18 @@ on:
       environment:
         required: true
         type: string
+      github-environment:
+        required: true
+        type: string
+        default: ${{ inputs.environment }}
+      region:
+        required: false
+        type: string
+        default: 'us-east-1'
+      subdomain:
+        required: false
+        type: string
+        default: ${{ inputs.environment }}
     secrets:
       ENV_SPECIFIC_SECRET:
         required: true
@@ -15,7 +27,7 @@ permissions: write-all
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.github-environment }}
     concurrency: ${{ inputs.environment }}-env
     env:
       ENV_SPECIFIC_SECRET: ${{ secrets.ENV_SPECIFIC_SECRET }}
@@ -26,13 +38,13 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
           role-to-assume: arn:aws:iam::499333472133:role/GitHub-CDK-Deploy
-          aws-region: us-east-1
+          aws-region: ${{ inputs.region }}
 
       - uses: aws-actions/amazon-ecr-login@v2
         with:
           mask-password: 'true'
 
-      - run: ./deploy.sh wiremock-cloud ${{ inputs.environment }}
+      - run: ./deploy.sh wiremock-cloud ${{ inputs.environment }} cdk ${{ inputs.subdomain }}
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v1.11.0

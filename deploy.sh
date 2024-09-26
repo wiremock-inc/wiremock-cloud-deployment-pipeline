@@ -5,7 +5,8 @@ set -euo pipefail
 main() {
   local product=$1
   local environment=$2
-  local to_deploy=${3:-cdk}
+  local to_deploy=$3
+  local subdomain=$4
 
   local stack="$product-$environment"
 
@@ -23,7 +24,7 @@ main() {
     local mothership_image; mothership_image=$(get_image mothership)
     local admin_image; admin_image=$(get_image admin)
 
-    deploy_cdk "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}"
+    deploy_cdk "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}" "$subdomain"
   else
     deploy_mock_hosts "$cdk_image" "$product" "$environment" "${mock_host_image#*:}"
   fi
@@ -42,6 +43,7 @@ deploy_cdk() {
   local mothership_image_tag=$4
   local mock_host_image_tag=$5
   local admin_image_tag=$6
+  local subdomain=$7
 
   echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
 
@@ -53,7 +55,8 @@ deploy_cdk() {
       --parameters uiImageTag="$ui_image_tag" \
       --parameters mothershipImageTag="$mothership_image_tag" \
       --parameters mockHostImageTag="$mock_host_image_tag" \
-      --parameters adminImageTag="$admin_image_tag"
+      --parameters adminImageTag="$admin_image_tag" \
+      --parameters subdomain="$subdomain"
 
   tag_deployment "$stack"
 }
