@@ -7,6 +7,7 @@ main() {
   local environment=$2
   local to_deploy=$3
   local subdomain=$4
+  local region=$5
 
   local stack="$product-$environment"
 
@@ -16,6 +17,7 @@ main() {
     echo "Not running unknown cdk image $cdk_image"
     exit 1
   fi
+  cdk_image=${cdk_image/us-east-1/"$region"}
 
   local mock_host_image; mock_host_image=$(get_image mock-host)
   if [[ $to_deploy == cdk ]]; then
