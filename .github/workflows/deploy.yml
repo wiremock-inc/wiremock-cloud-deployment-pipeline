@@ -6,10 +6,18 @@ on:
       environment:
         required: true
         type: string
+      github-environment:
+        required: true
+        type: string
+        default: ${{ inputs.environment }}
       region:
         required: false
         type: string
         default: 'us-east-1'
+      subdomain:
+        required: false
+        type: string
+        default: ${{ inputs.environment }}
     secrets:
       ENV_SPECIFIC_SECRET:
         required: true
@@ -19,7 +27,7 @@ permissions: write-all
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.github-environment }}
     concurrency: ${{ inputs.environment }}-env
     env:
       ENV_SPECIFIC_SECRET: ${{ secrets.ENV_SPECIFIC_SECRET }}

@@ -2,23 +2,27 @@ name: Deploy to backup region (us-east-2)
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
+    inputs:
+      subdomain:
+        required: true
+        description: The subdomain we are deploying to eg 'dev' or 'backup' or leave blank no subdomain i.e. live
+        type: string
 
 jobs:
   deploy-to-backup-region:
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
-      environment: live
+      github-environment: backup
+      environment: qa
       region: 'us-east-2'
+      subdomain: ${{ inputs.subdomain }}
     secrets: inherit
 
   deploy-mock-hosts-to-backup-region:
     needs: deploy-to-backup-region
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
     with:
-      github-environment: live
-      environment: live
+      github-environment: backup
+      environment: qa
       region: 'us-east-2'
     secrets: inherit
