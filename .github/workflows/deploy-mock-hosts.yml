@@ -1,21 +1,6 @@
 name: Deploy Mock Hosts to Environment
 
 on:
-  workflow_dispatch:
-    inputs:
-      github-environment:
-        required: true
-        type: string
-      environment:
-        required: true
-        type: string
-      region:
-        required: false
-        type: string
-        default: 'us-east-1'
-    secrets:
-      ENV_SPECIFIC_SECRET:
-        required: true
   workflow_call:
     inputs:
       github-environment:
