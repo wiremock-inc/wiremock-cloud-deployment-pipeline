@@ -19,8 +19,8 @@
     "name": "mothership",
     "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1356.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/11030981425",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/02fe105b8d1689601e12bc2af095376a0e2225bd"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
