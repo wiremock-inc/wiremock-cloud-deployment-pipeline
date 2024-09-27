@@ -2,12 +2,68 @@
 
 set -euo pipefail
 
+usage="Usage: $(basename "$0") [-h] [-p product] [-e env] [-r region] [-s subdomain] services_to_deploy -- deploy our services using the CDK.
+
+where:
+    -h  show this help text
+    -p  product                                 required (e.g. wiremock-cloud)
+    -e  environment                             required (e.g. live, qa, dev)
+    -r  region                                  required (e.g. us-east-1)
+    -s  subdomain                               required if and only if services_to_deploy is cdk (e.g. dev, qa, '')
+    services_to_deploy; cdk, mock-hosts         mock-hosts to deploy all mock-hosts, cdk to deploy everything else
+
+examples:
+./$(basename "$0") -p wiremock-cloud -e live -r us-east-1 -s '' cdk
+./$(basename "$0") -p wiremock-cloud -e backup -r us-east-2 mock-hosts
+"
+
+while getopts ":hp:e:r:s:" opt; do
+  case $opt in
+    h) echo "$usage"
+       exit
+       ;;
+    p) product="$OPTARG"
+    ;;
+    e) environment="$OPTARG"
+    ;;
+    r) region="$OPTARG"
+    ;;
+    s) subdomain="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    echo
+    echo "$usage"
+    exit 1
+    ;;
+  esac
+
+  case $OPTARG in
+    -*) echo "Option $opt needs a valid argument"
+    echo
+    echo "$usage"
+    exit 1
+    ;;
+  esac
+done
+
+shift "$(( OPTIND - 1 ))"
+
 main() {
-  local product=$1
-  local environment=$2
-  local to_deploy=$3
-  local subdomain=${4:-''}
-  local region=${5:-''}
+  services_to_deploy=$1
+
+  if [ -z ${product+x} ] && [ -z ${env+x} ] && [ -z ${region+x} ]; then
+    echo "Missing required options"
+    echo
+    echo "$usage"
+    exit 1
+  fi
+
+  if [ $services_to_deploy = 'cdk' ] && [ -z ${subdomain+x} ]; then
+    echo "Subdomain option (-s) must be supplied when services_to_deploy is cdk"
+    echo
+    echo "$usage"
+    exit 1
+  fi
 
   local stack="$product-$environment"
 
@@ -20,7 +76,7 @@ main() {
   cdk_image=${cdk_image/us-east-1/"$region"}
 
   local mock_host_image; mock_host_image=$(get_image mock-host)
-  if [[ $to_deploy == cdk ]]; then
+  if [[ $services_to_deploy == cdk ]]; then
 
     local ui_image; ui_image=$(get_image ui)
     local mothership_image; mothership_image=$(get_image mothership)
