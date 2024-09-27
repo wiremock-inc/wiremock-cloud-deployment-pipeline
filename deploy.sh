@@ -6,8 +6,8 @@ main() {
   local product=$1
   local environment=$2
   local to_deploy=$3
-  local subdomain=$4
-  local region=$5
+  local subdomain=${4:-''}
+  local region=${5:-''}
 
   local stack="$product-$environment"
 
