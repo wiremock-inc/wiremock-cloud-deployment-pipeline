@@ -13,7 +13,7 @@ jobs:
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
       github-environment: backup
-      environment: qa
+      environment: qa-bk
       region: 'us-east-2'
       subdomain: ${{ inputs.subdomain }}
     secrets: inherit
@@ -23,6 +23,6 @@ jobs:
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
     with:
       github-environment: backup
-      environment: qa
+      environment: qa-bk
       region: 'us-east-2'
     secrets: inherit
