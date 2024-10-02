@@ -65,7 +65,6 @@ main() {
     exit 1
   fi
 
-  local stack="$product-$environment"
 
   local cdk_image; cdk_image=$(get_image cdk)
   # check that someone hasn't just sent us some random image to execute with our AWS creds...
@@ -82,7 +81,9 @@ main() {
     local mothership_image; mothership_image=$(get_image mothership)
     local admin_image; admin_image=$(get_image admin)
 
-    deploy_cdk "$cdk_image" "$stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}" "$subdomain"
+    local main_stack="$product-$environment"
+    local mock_host_service_catalog_stack="$product-$environment-mock-host-service-catalog"
+    deploy_cdk "$cdk_image" "$main_stack" "$mock_host_service_catalog_stack" "${ui_image#*:}" "${mothership_image#*:}" "${mock_host_image#*:}" "${admin_image#*:}" "$subdomain"
   else
     deploy_mock_hosts "$cdk_image" "$product" "$environment" "${mock_host_image#*:}"
   fi
@@ -96,19 +97,20 @@ get_image() {
 
 deploy_cdk() {
   local cdk_image=$1
-  local stack=$2
-  local ui_image_tag=$3
-  local mothership_image_tag=$4
-  local mock_host_image_tag=$5
-  local admin_image_tag=$6
-  local subdomain=$7
+  local main_stack=$2
+  local mock_host_service_catalog_stack=$3
+  local ui_image_tag=$4
+  local mothership_image_tag=$5
+  local mock_host_image_tag=$6
+  local admin_image_tag=$7
+  local subdomain=$8
 
   echo "Deploying ui $ui_image_tag, mothership $mothership_image_tag, admin $admin_image_tag using cdk ${cdk_image#*:}"
 
   docker_run \
       --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
       "$cdk_image" \
-      deploy "$stack" \
+      deploy "$main_stack" "$mock_host_service_catalog_stack" \
       --require-approval never \
       --parameters uiImageTag="$ui_image_tag" \
       --parameters mothershipImageTag="$mothership_image_tag" \
@@ -116,7 +118,8 @@ deploy_cdk() {
       --parameters adminImageTag="$admin_image_tag" \
       --parameters subdomain="$subdomain"
 
-  tag_deployment "$stack"
+  tag_deployment "$main_stack"
+  tag_deployment "$mock_host_service_catalog_stack"
 }
 
 deploy_mock_hosts() {
