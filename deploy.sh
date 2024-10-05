@@ -110,15 +110,21 @@ deploy_cdk() {
   docker_run \
       --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
       "$cdk_image" \
-      deploy "$main_stack" "$mock_host_service_catalog_stack" \
+      deploy "$main_stack" \
       --require-approval never \
-      --parameters $main_stack:uiImageTag="$ui_image_tag" \
-      --parameters $main_stack:mothershipImageTag="$mothership_image_tag" \
-      --parameters $main_stack:mockHostImageTag="$mock_host_image_tag" \
-      --parameters $main_stack:adminImageTag="$admin_image_tag" \
-      --parameters $main_stack:subdomain="$subdomain"
+      --parameters uiImageTag="$ui_image_tag" \
+      --parameters mothershipImageTag="$mothership_image_tag" \
+      --parameters mockHostImageTag="$mock_host_image_tag" \
+      --parameters adminImageTag="$admin_image_tag" \
+      --parameters subdomain="$subdomain"
 
   tag_deployment "$main_stack"
+
+  docker_run \
+      "$cdk_image" \
+      deploy "$mock_host_service_catalog_stack" \
+      --require-approval never
+
   tag_deployment "$mock_host_service_catalog_stack"
 }
 
