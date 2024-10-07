@@ -17,18 +17,18 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:https-mock-host-kick",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1365.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/11209010483",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/b0ccdefdd3936c479c81b85c6732c53ce47e109b"
     }
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:disable-plaintext-http",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.889.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/11208856057",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/201d24e79f9687250e6ce16894dc70a3b1803edc"
     }
   },
   {
