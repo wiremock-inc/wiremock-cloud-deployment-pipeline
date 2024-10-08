@@ -48,6 +48,8 @@ done
 
 shift "$(( OPTIND - 1 ))"
 
+WMC_ENV=$environment
+
 main() {
   services_to_deploy=$1
 
@@ -155,6 +157,7 @@ docker_run() {
     -e AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY \
     -e AWS_SESSION_TOKEN \
+    -e WMC_ENV \
     "$@"
 }
 
