@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.720.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:restrict-refresh-oidc-call",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/11277451268",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/22f56dc7eed0845cf361188a74e8cfe8ecfec7d6"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
