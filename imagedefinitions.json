@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.721.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_1634-import-openapi-into-rest-mock-api-flow",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/11382011122",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/8dbb60e9056fc893597f01d3ad757a9e6951f9ae"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
