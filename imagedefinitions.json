@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_1634-import-openapi-into-rest-mock-api-flow",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:chore_rename-account-to-user",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
