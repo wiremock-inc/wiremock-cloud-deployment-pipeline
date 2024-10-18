@@ -33,10 +33,10 @@
   },
   {
     "name": "admin",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.151.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:update-mothership-account-urls-to-user",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/admin/actions/runs/11067173848",
-      "sourceCommit": "https://github.com/wiremock-inc/admin/tree/b6dff9796a37fbe9d09cf6b0ea0956fdadb5c2a5"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   }
 ]
