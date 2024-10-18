@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1378.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:change-accounts-to-users",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/11368732413",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/94c473f461e34b6ccc59d68d150093119ff50f13"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
