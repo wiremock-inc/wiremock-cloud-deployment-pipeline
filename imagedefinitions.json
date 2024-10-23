@@ -9,7 +9,7 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:chore_rename-account-to-user",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:data-source-api-v2",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
