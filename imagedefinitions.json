@@ -17,10 +17,10 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:account-to-user-subject-type-rename",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1400.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/11495625344",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/86ec247a6e826999bc0ca73c44f126790f977813"
     }
   },
   {
@@ -33,10 +33,10 @@
   },
   {
     "name": "admin",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:update-mothership-account-urls-to-user",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-admin:1.152.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/admin/actions/runs/11408346878",
+      "sourceCommit": "https://github.com/wiremock-inc/admin/tree/1bff1884af8d9615e8e59f2e5e30f497f33a65db"
     }
   }
 ]
