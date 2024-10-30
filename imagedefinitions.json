@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:remove-data-source-api-v1",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1422.0",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
