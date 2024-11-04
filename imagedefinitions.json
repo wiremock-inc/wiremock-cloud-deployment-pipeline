@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.739.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:feat_1623-enforce-email-verification",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/11632184506",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/877ec2b2ec9d991a253f818161b9a0ccdfc3c986"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
