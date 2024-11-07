@@ -49,7 +49,6 @@ jobs:
     secrets: inherit
 
   authorise-deploy-live:
-    needs: [deploy-qa-mock-hosts, create-release-notes]
     runs-on: ubuntu-latest
     environment: live
     steps:
