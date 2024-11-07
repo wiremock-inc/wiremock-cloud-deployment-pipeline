@@ -48,24 +48,30 @@ jobs:
       environment: qa
     secrets: inherit
 
-  authorise-deploy-live:
-    runs-on: ubuntu-latest
-    environment: live
+  deploy-live:
+    needs: [deploy-qa-mock-hosts, create-release-notes]
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
+    with:
+      github-environment: live
+      environment: live
+      subdomain: ''
+    secrets: inherit
+
+  update-mock-host-release-notes:
+    needs: deploy-live
+    runs-on: ubuntu-20.04
     steps:
-      - name: Generate a token
-        id: generate-token
-        uses: actions/create-github-app-token@v1
+      - uses: actions/checkout@v4
+      - uses: webfactory/ssh-agent@v0.9.0
         with:
-          app-id: 862323
-          private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
-          owner: Mahoney
-      - uses: actions/github-script@v7
-        with:
-          github-token: ${{ steps.generate-token.outputs.token }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'wiremock-inc',
-              repo: 'wiremock-cloud-deployment-pipeline',
-              workflow_id: 'deploy-live.yml',
-              ref: 'main'
-            })
+          ssh-private-key: |
+            ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
+      - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
+
+  deploy-live-mock-hosts:
+    needs: [deploy-live, update-mock-host-release-notes]
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
+    with:
+      github-environment: live-mock-hosts
+      environment: live
+    secrets: inherit
