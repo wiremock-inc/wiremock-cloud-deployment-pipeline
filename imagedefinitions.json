@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.757.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:embroider-go-again",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/11739720716",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/a07e9b9c1b76acd3a8456cf917f86116cf9bf23d"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
