@@ -150,6 +150,17 @@ jobs:
             });
             return issue.data.number;
 
+      - name: Link to the pipeline
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_deploy_issue.outputs.result }},
+              body: "[Deployment Pipeline #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
+            });
+
       - name: Comment on the issue
         uses: actions/github-script@v7
         with:
@@ -239,6 +250,17 @@ jobs:
             });
             return issue.data.number;
 
+      - name: Link to the pipeline
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              body: "[Deployment Pipeline #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
+            });
+
       - name: Comment on the issue
         uses: actions/github-script@v7
         with:
@@ -247,7 +269,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
-              body: "Approved by @${{ needs.deploy-live-mock-hosts.outputs.live-pre-approve-approver }}, @${{ needs.deploy-live-mock-hosts.outputs.live-approver }} and @${{ steps.live-mock-hosts-approver.outputs.approver }} and deployed",
+              body: "Approved by @${{ needs.record-deployment.outputs.live-pre-approve-approver }}, @${{ needs.record-deployment.outputs.live-approver }} and @${{ steps.live-mock-hosts-approver.outputs.approver }} and deployed",
             });
 
       - name: Close the issue
