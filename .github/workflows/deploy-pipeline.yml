@@ -22,7 +22,7 @@ jobs:
             ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
             ${{ secrets.UI_DEPLOY_KEY }}
       - id: release_notes
-        run: release_notes=$(./create-release-notes.sh live); echo "release_notes=$release_notes" >> $GITHUB_OUTPUT; echo "$release_notes" >> $GITHUB_STEP_SUMMARY
+        run: release_notes="$(./create-release-notes.sh live)"; echo release_notes="$release_notes" >> $GITHUB_OUTPUT; echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   create-mock-host-release-notes:
     needs: create-release-notes
