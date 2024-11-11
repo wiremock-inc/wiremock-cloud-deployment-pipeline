@@ -149,7 +149,7 @@ jobs:
               ]
             });
 
-      - run: echo ${{ steps.create_deploy_issue.outputs }}
+      - run: echo ${{ fromJson(steps.create_deploy_issue.outputs) }}
 
       - name: Close the issue
         uses: actions/github-script@v7
