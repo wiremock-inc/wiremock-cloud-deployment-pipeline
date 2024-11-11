@@ -64,6 +64,8 @@ jobs:
     environment: live-pre-approve
     concurrency: live-env
     runs-on: ubuntu-20.04
+    permissions:
+      issues: write
     steps:
 
       - uses: actions/checkout@v4
@@ -72,7 +74,7 @@ jobs:
         id: live-pre-approver
         run: |
           approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
-          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-pre-approve"))) | .user.login' && \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-pre-approve"))) | .user.login') && \
           echo approver="$approver" >> $GITHUB_OUTPUT
 
       - name: Create an issue
