@@ -28,7 +28,7 @@ jobs:
           release_notes="$(./create-release-notes.sh live)"
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
-          echo "$release_notes" | sed 's/\[\([^]]*\)\](\([^)]+\))/<\2|\1>/g'  >> $GITHUB_OUTPUT
+          echo "$release_notes" | sed 's/\[\([^]]*\)\](\([^)]*\))/<\2|\1>/g'  >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
@@ -75,7 +75,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deployment ${{ github.event.workflow_run.display_title }}>"
+                    "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deployment pipeline #>"
                   }
                 },
                 {
