@@ -55,6 +55,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
 
+      - uses: actions/checkout@v4
+
       - id: release_notes
         run: echo release_notes=$(./create-release-notes.sh live) >> $GITHUB_ENV
 
@@ -66,7 +68,7 @@ jobs:
           slack-message: |
             Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
             
-            ${{ steps.release_notes.outputs.release_notes }}
+            ${{ env.release_notes }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
