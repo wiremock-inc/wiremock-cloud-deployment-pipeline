@@ -51,13 +51,13 @@ jobs:
   deploy-qa:
     runs-on: ubuntu-20.04
     steps:
-      - run: echo fake deploy-qa
+      - run: fake deploy-qa
 
   deploy-qa-mock-hosts:
     needs: deploy-qa
     runs-on: ubuntu-20.04
     steps:
-      - run: echo fake deploy-qa-mock-hosts
+      - run: fake deploy-qa-mock-hosts
 
   deploy-live-pre-approve:
     needs: [deploy-qa-mock-hosts, create-release-notes]
