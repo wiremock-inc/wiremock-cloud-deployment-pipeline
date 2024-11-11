@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-20.04
     outputs:
       release_notes: ${{ steps.release_notes.outputs.release_notes }}
+      slack_release_notes: ${{ steps.release_notes.outputs.slack_release_notes }}
     steps:
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
@@ -28,6 +29,10 @@ jobs:
           release_notes="$(./create-release-notes.sh live)"
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "slack_release_notes<<$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" | sed 's/\[\([^]]*\)\](\([^)]*\))/<\2|\1>/g'  >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_STEP_SUMMARY
@@ -63,6 +68,25 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - name: Get approver
+        id: live-pre-approver
+        runs: |
+          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-pre-approve"))) | .user.login' && \
+          echo approver="$approver" >> $GITHUB_OUTPUT
+
+      - name: Create an issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Live release of Deployment Pipeline #${{ github.run_number }}",
+              body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
+              assignee: "${{ steps.live-pre-approver.outputs.approver }}".
+            });
+
       - name: Publish to slack channel via bot token
         id: slack
         uses: slackapi/slack-github-action@v1
@@ -82,7 +106,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ${{ toJSON(needs.create-release-notes.outputs.release_notes) }}
+                    "text": ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
                   }
                 }
               ]
