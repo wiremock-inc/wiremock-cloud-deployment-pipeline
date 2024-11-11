@@ -75,7 +75,14 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\n${{ toJSON(needs.create-release-notes.outputs.release_notes) }}"
+                    "text": "Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ${{ toJSON(needs.create-release-notes.outputs.release_notes) }}"
                   }
                 }
               ]
