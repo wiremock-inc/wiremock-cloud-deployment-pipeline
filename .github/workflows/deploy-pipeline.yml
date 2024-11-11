@@ -48,13 +48,19 @@ jobs:
       environment: qa
     secrets: inherit
 
-  deploy-live:
+  deploy-live-pre-approve:
     needs: [deploy-qa-mock-hosts, create-release-notes]
+    environment: live
+    concurrency: live-env
+
+  deploy-live:
+    needs: deploy-live-pre-approve
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
       github-environment: live
       environment: live
       subdomain: ''
+      pre-approve: deploy-live-pre-approve
     secrets: inherit
 
   update-mock-host-release-notes:

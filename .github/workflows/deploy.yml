@@ -16,6 +16,9 @@ on:
       subdomain:
         required: true
         type: string
+      pre-approve:
+        required: false
+        type: string
     secrets:
       ENV_SPECIFIC_SECRET:
         required: true
