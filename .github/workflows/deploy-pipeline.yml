@@ -168,7 +168,16 @@ jobs:
         with:
           ssh-private-key: |
             ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
-      - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
+      - id: release_notes
+        name: Store release notes in outputs and job summary
+        run: |
+          set -eu
+          release_notes="$(./create-mock-host-release-notes.sh live)"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   deploy-live-mock-hosts:
     needs: [deploy-live, update-mock-host-release-notes]
@@ -177,3 +186,49 @@ jobs:
       github-environment: live-mock-hosts
       environment: live
     secrets: inherit
+
+  record-mock-host-deployment:
+    needs:
+      - update-mock-host-release-notes
+      - deploy-live-mock-hosts
+    runs-on: ubuntu-20.04
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get live-mock-hosts approver
+        id: live-mock-hosts-approver
+        run: |
+          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-mock-hosts"))) | .user.login') && \
+          echo approver="$approver" >> $GITHUB_OUTPUT
+
+      - name: Create an issue
+        id: create_mock_host_deploy_issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            return await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Live mock hosts deploy of Deployment Pipeline #${{ github.run_number }}",
+              body: ${{ toJSON(needs.update-mock-host-release-notes.outputs.release_notes) }},
+              assignees: [
+                "${{ needs.deploy-live-mock-hosts.outputs.live-pre-approve-approver }}",
+                "${{ needs.deploy-live-mock-hosts.outputs.live-approver }}",
+                "${{ steps.live-mock-hosts-approver.outputs.approver }}"
+              ]
+            });
+
+      - name: Close the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.return.number }},
+              state: "closed",
+              state_reason: "Approved by @${{ needs.deploy-live-mock-hosts.outputs.live-pre-approve-approver }}, @${{ needs.deploy-live-mock-hosts.outputs.live-approver }} and @${{ steps.live-mock-hosts-approver.outputs.approver }} and deployed",
+            });
