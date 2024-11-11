@@ -52,6 +52,8 @@ jobs:
     needs: [deploy-qa-mock-hosts, create-release-notes]
     environment: live
     concurrency: live-env
+    steps:
+      - run: Approved
 
   deploy-live:
     needs: deploy-live-pre-approve
