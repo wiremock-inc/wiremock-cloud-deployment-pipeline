@@ -64,34 +64,9 @@ jobs:
     environment: live-pre-approve
     concurrency: live-env
     runs-on: ubuntu-20.04
-    permissions:
-      issues: write
-    outputs:
-      approver: ${{ steps.live-pre-approve-approver.outputs.approver }}
-      release_issue: ${{ steps.create_release_issue.outputs.return }}
     steps:
 
       - uses: actions/checkout@v4
-
-      - name: Get live-pre-approve approver
-        id: live-pre-approve-approver
-        run: |
-          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
-          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-pre-approve"))) | .user.login') && \
-          echo approver="$approver" >> $GITHUB_OUTPUT
-
-      - name: Create an issue
-        id: create_release_issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            return await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "Live deploy of Deployment Pipeline #${{ github.run_number }}",
-              body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
-              assignee: "${{ steps.live-pre-approve-approver.outputs.approver }}"
-            });
 
       - name: Publish to slack channel via bot token
         id: slack
@@ -131,13 +106,23 @@ jobs:
       pre-approve: true
     secrets: inherit
 
-  close-deploy-issue:
+  record-deployment:
     needs: deploy-live
     runs-on: ubuntu-20.04
     permissions:
       issues: write
+    outputs:
+      live-pre-approve-approver: ${{ steps.live-pre-approve-approver.outputs.approver }}
+      live-approver: ${{ steps.live-approver.outputs.approver }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Get live-pre-approve approver
+        id: live-pre-approve-approver
+        run: |
+          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-pre-approve"))) | .user.login') && \
+          echo approver="$approver" >> $GITHUB_OUTPUT
 
       - name: Get live approver
         id: live-approver
@@ -146,6 +131,22 @@ jobs:
           | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live"))) | .user.login') && \
           echo approver="$approver" >> $GITHUB_OUTPUT
 
+      - name: Create an issue
+        id: create_deploy_issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            return await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Live deploy of Deployment Pipeline #${{ github.run_number }}",
+              body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
+              assignees: [
+                "${{ steps.live-pre-approve-approver.outputs.approver }}",
+                "${{ steps.live-approver.outputs.approver }}"
+              ]
+            });
+
       - name: Close the issue
         uses: actions/github-script@v7
         with:
@@ -153,14 +154,9 @@ jobs:
             await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ needs.deploy-live-pre-approve.outputs.release_issue.number }},
+              issue_number: ${{ steps.create_deploy_issue.outputs.return.number }},
               state: "closed",
-              state_reason: "Approved by ${{ steps.live-approver.outputs.approver }} and deployed",
-              body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
-              assignees: [
-                "${{ needs.deploy-live-pre-approve.outputs.approver }}",
-                "${{ steps.live-approver.outputs.approver }}",
-              ]
+              state_reason: "Approved by @${{ steps.live-pre-approve-approver.outputs.approver }} and @${{ steps.live-approver.outputs.approver }} and deployed",
             });
 
   update-mock-host-release-notes:
