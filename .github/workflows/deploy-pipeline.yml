@@ -68,7 +68,7 @@ jobs:
       issues: write
     outputs:
       approver: ${{ steps.live-pre-approve-approver.outputs.approver }}
-      release_issue_number: ${{ steps.create_release_issue.outputs.release_issue_number }}
+      release_issue: ${{ steps.create_release_issue.outputs.return }}
     steps:
 
       - uses: actions/checkout@v4
@@ -91,7 +91,7 @@ jobs:
               title: "Live deploy of Deployment Pipeline #${{ github.run_number }}",
               body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
               assignee: "${{ steps.live-pre-approve-approver.outputs.approver }}"
-            }).number;
+            });
 
       - name: Publish to slack channel via bot token
         id: slack
@@ -153,7 +153,7 @@ jobs:
             await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ needs.deploy-live-pre-approve.outputs.release_issue_number }},
+              issue_number: ${{ needs.deploy-live-pre-approve.outputs.release_issue.number }},
               state: "closed",
               state_reason: "Approved by ${{ steps.live-approver.outputs.approver }} and deployed",
               body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
