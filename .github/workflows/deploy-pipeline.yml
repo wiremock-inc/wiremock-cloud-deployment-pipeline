@@ -49,15 +49,20 @@ jobs:
       - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
 
   deploy-qa:
-    runs-on: ubuntu-20.04
-    steps:
-      - run: fake deploy-qa
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
+    with:
+      github-environment: qa
+      environment: qa
+      subdomain: qa
+    secrets: inherit
 
   deploy-qa-mock-hosts:
     needs: deploy-qa
-    runs-on: ubuntu-20.04
-    steps:
-      - run: fake deploy-qa-mock-hosts
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
+    with:
+      github-environment: qa
+      environment: qa
+    secrets: inherit
 
   deploy-live-pre-approve:
     needs: [deploy-qa-mock-hosts, create-release-notes]
