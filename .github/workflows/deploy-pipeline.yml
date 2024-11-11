@@ -9,6 +9,8 @@ on:
 jobs:
   create-release-notes:
     runs-on: ubuntu-20.04
+    outputs:
+      release_notes: ${{ steps.step1.outputs.release_notes }}
     steps:
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
@@ -19,7 +21,8 @@ jobs:
             ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
             ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
             ${{ secrets.UI_DEPLOY_KEY }}
-      - run: ./create-release-notes.sh live >> $GITHUB_STEP_SUMMARY
+      - id: release_notes
+        run: release_notes=$(./create-release-notes.sh live); echo "release_notes=$release_notes" >> $GITHUB_OUTPUT; echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   create-mock-host-release-notes:
     needs: create-release-notes
@@ -57,9 +60,6 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - id: release_notes
-        run: echo release_notes=$(./create-release-notes.sh live) >> $GITHUB_ENV
-
       - name: Publish to slack channel via bot token
         id: slack
         uses: slackapi/slack-github-action@v1
@@ -68,7 +68,7 @@ jobs:
           slack-message: |
             Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
             
-            ${{ env.release_notes }}
+            ${{ needs.create-release-notes.outputs.release_notes }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
