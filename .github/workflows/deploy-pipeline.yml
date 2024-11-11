@@ -107,7 +107,9 @@ jobs:
     secrets: inherit
 
   record-deployment:
-    needs: deploy-live
+    needs:
+      - create-release-notes
+      - deploy-live
     runs-on: ubuntu-20.04
     permissions:
       issues: write
@@ -136,7 +138,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            return await github.rest.issues.create({
+            const result = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: "Live deploy of Deployment Pipeline #${{ github.run_number }}",
@@ -146,6 +148,9 @@ jobs:
                 "${{ steps.live-approver.outputs.approver }}"
               ]
             });
+            console.log("result", result);
+            console.log(`result: ${result}`);
+            return result;
 
       - name: Close the issue
         uses: actions/github-script@v7
