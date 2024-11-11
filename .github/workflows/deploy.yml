@@ -44,7 +44,7 @@ jobs:
         run: |
           # Fetch the list of review events for this workflow run
           reviewers=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
-            | jq -r '.[] | .user.login' | sort -u)
+            | jq -r '.[] | select(.state == "approved" and any(.environments[]; .name | startswith("live"))) | .user.login' | sort -u)
 
           # Check if there are two unique reviewers
           reviewer_count=$(echo "$reviewers" | wc -l)
