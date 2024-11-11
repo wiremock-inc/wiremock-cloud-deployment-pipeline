@@ -157,7 +157,7 @@ jobs:
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              issue_number: ${{ steps.create_deploy_issue.outputs.result }},
               body: "Approved by @${{ steps.live-pre-approve-approver.outputs.approver }} and @${{ steps.live-approver.outputs.approver }} and deployed",
             });
 
