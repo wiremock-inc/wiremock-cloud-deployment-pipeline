@@ -86,7 +86,7 @@ jobs:
               repo: context.repo.repo,
               title: "Live release of Deployment Pipeline #${{ github.run_number }}",
               body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
-              assignee: "${{ steps.live-pre-approver.outputs.approver }}".
+              assignee: "${{ steps.live-pre-approver.outputs.approver }}"
             });
 
       - name: Publish to slack channel via bot token
