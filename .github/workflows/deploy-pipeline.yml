@@ -54,7 +54,21 @@ jobs:
     concurrency: live-env
     runs-on: ubuntu-20.04
     steps:
-      - run: echo Approved
+
+      - id: release_notes
+        run: echo release_notes=$(./create-release-notes.sh live) >> $GITHUB_ENV
+
+      - name: Publish to slack channel via bot token
+        id: slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: 'SLACK_CHANNEL_ID' # ID of Slack Channel you want to post to
+          slack-message: |
+            Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            
+            ${{ steps.release_notes.outputs.release_notes }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
   deploy-live:
     needs: deploy-live-pre-approve
