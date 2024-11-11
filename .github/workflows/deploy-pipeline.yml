@@ -145,10 +145,21 @@ jobs:
               body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
               assignees: [
                 "${{ steps.live-pre-approve-approver.outputs.approver }}",
-                "${{ steps.live-approver.outputs.approver }}"
-              ]
+                "${{ steps.live-approver.outputs.approver }}",
+              ],
             });
             return issue.data.number;
+
+      - name: Comment on the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              body: "Approved by @${{ steps.live-pre-approve-approver.outputs.approver }} and @${{ steps.live-approver.outputs.approver }} and deployed",
+            });
 
       - name: Close the issue
         uses: actions/github-script@v7
@@ -159,7 +170,7 @@ jobs:
               repo: context.repo.repo,
               issue_number: ${{ steps.create_deploy_issue.outputs.result }},
               state: "closed",
-              state_reason: "Approved by @${{ steps.live-pre-approve-approver.outputs.approver }} and @${{ steps.live-approver.outputs.approver }} and deployed",
+              state_reason: "completed",
             });
 
   update-mock-host-release-notes:
@@ -223,10 +234,21 @@ jobs:
               assignees: [
                 "${{ needs.record-deployment.outputs.live-pre-approve-approver }}",
                 "${{ needs.record-deployment.outputs.live-approver }}",
-                "${{ steps.live-mock-hosts-approver.outputs.approver }}"
-              ]
+                "${{ steps.live-mock-hosts-approver.outputs.approver }}",
+              ],
             });
             return issue.data.number;
+
+      - name: Comment on the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              body: "Approved by @${{ needs.deploy-live-mock-hosts.outputs.live-pre-approve-approver }}, @${{ needs.deploy-live-mock-hosts.outputs.live-approver }} and @${{ steps.live-mock-hosts-approver.outputs.approver }} and deployed",
+            });
 
       - name: Close the issue
         uses: actions/github-script@v7
@@ -237,5 +259,5 @@ jobs:
               repo: context.repo.repo,
               issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
               state: "closed",
-              state_reason: "Approved by @${{ needs.deploy-live-mock-hosts.outputs.live-pre-approve-approver }}, @${{ needs.deploy-live-mock-hosts.outputs.live-approver }} and @${{ steps.live-mock-hosts-approver.outputs.approver }} and deployed",
+              state_reason: "completed",
             });
