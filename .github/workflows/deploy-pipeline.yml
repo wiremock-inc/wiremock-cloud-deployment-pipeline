@@ -22,7 +22,14 @@ jobs:
             ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
             ${{ secrets.UI_DEPLOY_KEY }}
       - id: release_notes
-        run: release_notes="$(./create-release-notes.sh live)"; echo release_notes="$release_notes" >> $GITHUB_OUTPUT; echo "$release_notes" >> $GITHUB_STEP_SUMMARY
+        run: |
+          set -eu
+          release_notes="$(./create-release-notes.sh live)"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "text<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   create-mock-host-release-notes:
     needs: create-release-notes
