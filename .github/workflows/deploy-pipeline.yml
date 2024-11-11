@@ -63,7 +63,7 @@ jobs:
       github-environment: live
       environment: live
       subdomain: ''
-      pre-approve: deploy-live-pre-approve
+      pre-approve: true
     secrets: inherit
 
   update-mock-host-release-notes:
