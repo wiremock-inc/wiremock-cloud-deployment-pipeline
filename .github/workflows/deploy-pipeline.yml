@@ -22,6 +22,7 @@ jobs:
             ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
             ${{ secrets.UI_DEPLOY_KEY }}
       - id: release_notes
+        name: Store release notes in outputs and job summary
         run: |
           set -eu
           release_notes="$(./create-release-notes.sh live)"
