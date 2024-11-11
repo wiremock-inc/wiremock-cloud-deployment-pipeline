@@ -62,7 +62,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1
         with:
-          channel-id: 'SLACK_CHANNEL_ID' # ID of Slack Channel you want to post to
+          channel-id: 'C03H9267J9X'
           slack-message: |
             Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
             
