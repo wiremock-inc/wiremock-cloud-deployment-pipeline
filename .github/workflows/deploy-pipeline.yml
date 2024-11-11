@@ -28,8 +28,7 @@ jobs:
           release_notes="$(./create-release-notes.sh live)"
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
-          echo "$release_notes" >> $GITHUB_OUTPUT
-          echo "$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" | sed -e 's/\[/</g' -e 's/](/|/g' -e 's/)/>/g'  >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   create-mock-host-release-notes:
@@ -68,25 +67,10 @@ jobs:
         uses: slackapi/slack-github-action@v1
         with:
           channel-id: 'C03H9267J9X'
-          payload: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Second approval required for [live deployment ${{ github.event.workflow_run.display_title }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": ${{ toJSON(needs.create-release-notes.outputs.release_notes) }}
-                  }
-                }
-              ]
-            }
+          slack-message: |
+            Second approval required for <live deployment ${{ github.event.workflow_run.display_title }}|${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>
+            
+            ${{ needs.create-release-notes.outputs.release_notes }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
