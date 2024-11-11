@@ -50,7 +50,7 @@ jobs:
 
   deploy-live-pre-approve:
     needs: [deploy-qa-mock-hosts, create-release-notes]
-    environment: live
+    environment: live-pre-approve
     concurrency: live-env
     runs-on: ubuntu-20.04
     steps:
