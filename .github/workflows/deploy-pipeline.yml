@@ -96,6 +96,7 @@ jobs:
           channel-id: 'C03H9267J9X'
           payload: |
             {
+              "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live release of Deployment Pipeline #${{ github.run_number }}>"
               "blocks": [
                 {
                   "type": "section",
