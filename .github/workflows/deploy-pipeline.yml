@@ -27,7 +27,7 @@ jobs:
           set -eu
           release_notes="$(./create-release-notes.sh live)"
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "text<<$EOF" >> $GITHUB_OUTPUT
+          echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_STEP_SUMMARY
