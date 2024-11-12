@@ -3,6 +3,9 @@ name: Deploy Mock Hosts to Environment
 on:
   workflow_call:
     inputs:
+      slack-body:
+        type: string
+        required: false
       github-environment:
         required: true
         type: string
@@ -30,6 +33,35 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - name: Publish to slack channel via bot token
+        if: "${{ inputs.slack-body != '' }}"
+        id: slack_mock_hosts
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: 'C03H9267J9X'
+          payload: |
+            {
+              "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ${{ toJSON(inputs.slack-body) }}
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
       - uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
           role-to-assume: arn:aws:iam::499333472133:role/GitHub-CDK-Deploy
@@ -40,3 +72,18 @@ jobs:
           mask-password: 'true'
 
       - run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
+
+      - name: Publish completion to Slack
+        if: "${{ inputs.slack-body != '' }}"
+        id: slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: 'C03H9267J9X'
+          payload: |
+            {
+              "text": "Deployment finished (Completed)",
+              "thread_ts": "${{ steps.slack_mock_hosts.outputs.ts }}",
+              "reply_broadcast": true
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
