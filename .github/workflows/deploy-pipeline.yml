@@ -69,12 +69,14 @@ jobs:
     environment: live-pre-approve
     concurrency: live-env
     runs-on: ubuntu-20.04
+    outputs:
+      slack_thread: ${{ steps.slack_live.outputs.ts }}
     steps:
 
       - uses: actions/checkout@v4
 
       - name: Publish to slack channel via bot token
-        id: slack
+        id: slack_live
         uses: slackapi/slack-github-action@v1
         with:
           channel-id: 'C03H9267J9X'
@@ -114,6 +116,7 @@ jobs:
   record-deployment:
     needs:
       - create-release-notes
+      - deploy-live-pre-approve
       - deploy-live
     runs-on: ubuntu-20.04
     permissions:
@@ -123,6 +126,19 @@ jobs:
       live-approver: ${{ steps.live-approver.outputs.approver }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Publish completion to Slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: 'C03H9267J9X'
+          payload: |
+            {
+              "text": "Deployment finished (Completed)",
+              "thread_ts": "${{ needs.deploy-live-pre-approve.outputs.slack_thread }}",
+              "reply_broadcast": true
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
       - name: Get live-pre-approve approver
         id: live-pre-approve-approver
@@ -194,6 +210,7 @@ jobs:
     runs-on: ubuntu-20.04
     outputs:
       release_notes: ${{ steps.release_notes.outputs.release_notes }}
+      slack_release_notes: ${{ steps.release_notes.outputs.slack_release_notes }}
     steps:
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
@@ -209,6 +226,10 @@ jobs:
           echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "slack_release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" | sed 's/\[\([^]]*\)\](\([^)]*\))/<\2|\1>/g'  >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   deploy-live-mock-hosts:
@@ -217,6 +238,7 @@ jobs:
     with:
       github-environment: live-mock-hosts
       environment: live
+      slack-body: ${{ needs.update-mock-host-release-notes.outputs.slack_release_notes }}
     secrets: inherit
 
   record-mock-host-deployment:
