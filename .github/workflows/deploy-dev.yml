@@ -17,7 +17,7 @@ jobs:
 
   smoke-test-dev:
     needs: deploy-dev
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@reduce-failure-opportunities
     with:
       environment: dev
     secrets: inherit

@@ -49,7 +49,7 @@ jobs:
       - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
 
   deploy-qa:
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@reduce-failure-opportunities
     with:
       github-environment: qa
       environment: qa
@@ -58,14 +58,14 @@ jobs:
 
   smoke-test-qa:
     needs: deploy-qa
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@reduce-failure-opportunities
     with:
       environment: qa
     secrets: inherit
 
   deploy-qa-mock-hosts:
     needs: deploy-qa
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@reduce-failure-opportunities
     with:
       github-environment: qa
       environment: qa
@@ -112,7 +112,7 @@ jobs:
 
   deploy-live:
     needs: deploy-live-pre-approve
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@reduce-failure-opportunities
     with:
       github-environment: live
       environment: live
@@ -122,7 +122,7 @@ jobs:
 
   smoke-test-live:
     needs: deploy-live
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@reduce-failure-opportunities
     with:
       environment: live
     secrets: inherit
@@ -248,7 +248,7 @@ jobs:
 
   deploy-live-mock-hosts:
     needs: [deploy-live, update-mock-host-release-notes]
-    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@reduce-failure-opportunities
     with:
       github-environment: live-mock-hosts
       environment: live
