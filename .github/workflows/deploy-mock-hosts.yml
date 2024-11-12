@@ -71,7 +71,7 @@ jobs:
         with:
           mask-password: 'true'
 
-      - run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
+#      - run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
 
       - name: Publish completion to Slack
         if: "${{ inputs.slack-body != '' }}"
