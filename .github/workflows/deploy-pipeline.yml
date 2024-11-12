@@ -9,6 +9,9 @@ on:
 jobs:
   create-release-notes:
     runs-on: ubuntu-20.04
+    outputs:
+      release_notes: ${{ steps.release_notes.outputs.release_notes }}
+      slack_release_notes: ${{ steps.release_notes.outputs.slack_release_notes }}
     steps:
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
@@ -19,7 +22,20 @@ jobs:
             ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
             ${{ secrets.MOTHERSHIP_DEPLOY_KEY }}
             ${{ secrets.UI_DEPLOY_KEY }}
-      - run: ./create-release-notes.sh live >> $GITHUB_STEP_SUMMARY
+      - id: release_notes
+        name: Store release notes in outputs and job summary
+        run: |
+          set -eu
+          release_notes="$(./create-release-notes.sh live)"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "slack_release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" | sed 's/\[\([^]]*\)\](\([^)]*\))/<\2|\1>/g'  >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   create-mock-host-release-notes:
     needs: create-release-notes
@@ -48,25 +64,152 @@ jobs:
       environment: qa
     secrets: inherit
 
-  deploy-live:
+  deploy-live-pre-approve:
     needs: [deploy-qa-mock-hosts, create-release-notes]
+    environment: live-pre-approve
+    concurrency: live-env
+    runs-on: ubuntu-20.04
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Publish to slack channel via bot token
+        id: slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: 'C03H9267J9X'
+          payload: |
+            {
+              "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+  deploy-live:
+    needs: deploy-live-pre-approve
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy.yml@main
     with:
       github-environment: live
       environment: live
       subdomain: ''
+      pre-approve: true
     secrets: inherit
+
+  record-deployment:
+    needs:
+      - create-release-notes
+      - deploy-live
+    runs-on: ubuntu-20.04
+    permissions:
+      issues: write
+    outputs:
+      live-pre-approve-approver: ${{ steps.live-pre-approve-approver.outputs.approver }}
+      live-approver: ${{ steps.live-approver.outputs.approver }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get live-pre-approve approver
+        id: live-pre-approve-approver
+        run: |
+          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-pre-approve"))) | .user.login') && \
+          echo approver="$approver" >> $GITHUB_OUTPUT
+
+      - name: Get live approver
+        id: live-approver
+        run: |
+          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live"))) | .user.login') && \
+          echo approver="$approver" >> $GITHUB_OUTPUT
+
+      - name: Create an issue
+        id: create_deploy_issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Live deploy of Deployment Pipeline #${{ github.run_number }}",
+              body: ${{ toJSON(needs.create-release-notes.outputs.release_notes) }},
+              assignees: [
+                "${{ steps.live-pre-approve-approver.outputs.approver }}",
+                "${{ steps.live-approver.outputs.approver }}",
+              ],
+            });
+            return issue.data.number;
+
+      - name: Link to the pipeline
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_deploy_issue.outputs.result }},
+              body: "[Deployment Pipeline #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
+            });
+
+      - name: Comment on the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_deploy_issue.outputs.result }},
+              body: "Approved by @${{ steps.live-pre-approve-approver.outputs.approver }} and @${{ steps.live-approver.outputs.approver }} and deployed",
+            });
+
+      - name: Close the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_deploy_issue.outputs.result }},
+              state: "closed",
+              state_reason: "completed",
+            });
 
   update-mock-host-release-notes:
     needs: deploy-live
     runs-on: ubuntu-20.04
+    outputs:
+      release_notes: ${{ steps.release_notes.outputs.release_notes }}
     steps:
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: |
             ${{ secrets.MOCK_HOST_DEPLOY_KEY }}
-      - run: ./create-mock-host-release-notes.sh live >> $GITHUB_STEP_SUMMARY
+      - id: release_notes
+        name: Store release notes in outputs and job summary
+        run: |
+          set -eu
+          release_notes="$(./create-mock-host-release-notes.sh live)"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          echo "$release_notes" >> $GITHUB_STEP_SUMMARY
 
   deploy-live-mock-hosts:
     needs: [deploy-live, update-mock-host-release-notes]
@@ -75,3 +218,73 @@ jobs:
       github-environment: live-mock-hosts
       environment: live
     secrets: inherit
+
+  record-mock-host-deployment:
+    needs:
+      - update-mock-host-release-notes
+      - deploy-live-mock-hosts
+      - record-deployment
+    runs-on: ubuntu-20.04
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get live-mock-hosts approver
+        id: live-mock-hosts-approver
+        run: |
+          approver=$(curl -s "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/approvals" \
+          | jq -r '.[] | select(.state == "approved" and (.environments[] | select(.name == "live-mock-hosts"))) | .user.login') && \
+          echo approver="$approver" >> $GITHUB_OUTPUT
+
+      - name: Create an issue
+        id: create_mock_host_deploy_issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Live mock hosts deploy of Deployment Pipeline #${{ github.run_number }}",
+              body: ${{ toJSON(needs.update-mock-host-release-notes.outputs.release_notes) }},
+              assignees: [
+                "${{ needs.record-deployment.outputs.live-pre-approve-approver }}",
+                "${{ needs.record-deployment.outputs.live-approver }}",
+                "${{ steps.live-mock-hosts-approver.outputs.approver }}",
+              ],
+            });
+            return issue.data.number;
+
+      - name: Link to the pipeline
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              body: "[Deployment Pipeline #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
+            });
+
+      - name: Comment on the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              body: "Approved by @${{ needs.record-deployment.outputs.live-pre-approve-approver }}, @${{ needs.record-deployment.outputs.live-approver }} and @${{ steps.live-mock-hosts-approver.outputs.approver }} and deployed",
+            });
+
+      - name: Close the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ steps.create_mock_host_deploy_issue.outputs.result }},
+              state: "closed",
+              state_reason: "completed",
+            });
