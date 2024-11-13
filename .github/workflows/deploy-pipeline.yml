@@ -56,6 +56,13 @@ jobs:
       subdomain: qa
     secrets: inherit
 
+  smoke-test-qa:
+    needs: deploy-qa
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@main
+    with:
+      environment: qa
+    secrets: inherit
+
   deploy-qa-mock-hosts:
     needs: deploy-qa
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
@@ -65,7 +72,7 @@ jobs:
     secrets: inherit
 
   deploy-live-pre-approve:
-    needs: [deploy-qa-mock-hosts, create-release-notes]
+    needs: [smoke-test-qa, deploy-qa-mock-hosts, create-release-notes]
     environment: live-pre-approve
     concurrency: live-env
     runs-on: ubuntu-20.04
@@ -111,6 +118,13 @@ jobs:
       environment: live
       subdomain: ''
       pre-approve: true
+    secrets: inherit
+
+  smoke-test-live:
+    needs: deploy-live
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@main
+    with:
+      environment: live
     secrets: inherit
 
   record-deployment:

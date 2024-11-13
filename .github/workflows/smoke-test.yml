@@ -1,0 +1,19 @@
+name: Deploy to Environment
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Run Datadog Synthetics tests in ${{ inputs.environment }}
+        uses: DataDog/synthetics-ci-github-action@v1.13.0
+        with:
+          api_key: ${{secrets.DD_SYNTHETIC_TESTS_API_KEY}}
+          app_key: ${{secrets.DD_SYNTHETIC_TESTS_APP_KEY}}
+          test_search_query: 'env:${{ inputs.environment }} state:live'
