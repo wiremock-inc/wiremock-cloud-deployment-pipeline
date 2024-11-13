@@ -86,7 +86,7 @@ jobs:
         id: slack_live
         uses: slackapi/slack-github-action@v1
         with:
-          channel-id: 'C03H9267J9X'
+          channel-id: 'D03GKG3RK9Q'
           payload: |
             {
               "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>",
@@ -144,7 +144,7 @@ jobs:
       - name: Publish completion to Slack
         uses: slackapi/slack-github-action@v1
         with:
-          channel-id: 'C03H9267J9X'
+          channel-id: 'D03GKG3RK9Q'
           payload: |
             {
               "text": "Deployment finished (Completed)",

@@ -38,7 +38,7 @@ jobs:
         id: slack_mock_hosts
         uses: slackapi/slack-github-action@v1
         with:
-          channel-id: 'C03H9267J9X'
+          channel-id: 'D03GKG3RK9Q'
           payload: |
             {
               "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>",
@@ -78,7 +78,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1
         with:
-          channel-id: 'C03H9267J9X'
+          channel-id: 'D03GKG3RK9Q'
           payload: |
             {
               "text": "Deployment finished (Completed)",
