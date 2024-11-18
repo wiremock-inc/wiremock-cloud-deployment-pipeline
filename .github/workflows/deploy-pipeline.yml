@@ -84,7 +84,7 @@ jobs:
 
       - name: Publish to slack channel via bot token
         id: slack_live
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-github-action@v2
         with:
           channel-id: 'C03H9267J9X'
           payload: |
@@ -142,7 +142,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Publish completion to Slack
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-github-action@v2
         with:
           channel-id: 'C03H9267J9X'
           payload: |
