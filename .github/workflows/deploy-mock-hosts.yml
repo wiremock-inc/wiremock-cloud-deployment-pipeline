@@ -36,7 +36,7 @@ jobs:
       - name: Publish to slack channel via bot token
         if: "${{ inputs.slack-body != '' }}"
         id: slack_mock_hosts
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-github-action@v2
         with:
           channel-id: 'C03H9267J9X'
           payload: |
@@ -76,7 +76,7 @@ jobs:
       - name: Publish completion to Slack
         if: "${{ inputs.slack-body != '' }}"
         id: slack
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-github-action@v2
         with:
           channel-id: 'C03H9267J9X'
           payload: |
