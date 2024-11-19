@@ -1,0 +1,15 @@
+name: "DataDog: Mute Monitor"
+
+inputs:
+  monitor_name:
+    description: "The name of the monitor to mute"
+    required: true
+  duration_minutes:
+    description: "The number of minutes the monitor should be muted"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - run: ./mute-monitor.sh ${{ inputs.monitor_name }} ${{ inputs.duration }} ${{ secrets.DD_SYNTHETIC_TESTS_API_KEY }} ${{ secrets.DD_SYNTHETIC_TESTS_APP_KEY }}
+      shell: bash

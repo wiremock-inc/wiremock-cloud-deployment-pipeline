@@ -1,0 +1,22 @@
+name: Mute Monitor
+
+on:
+  workflow_call:
+    inputs:
+      monitor_name:
+        description: "The name of the monitor to mute"
+        type: string
+        required: true
+      duration_minutes:
+        description: "The number of minutes the monitor should be muted"
+        type: number
+        required: false
+
+jobs:
+  mute-monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/mute-monitor
+        with:
+          monitor_name: ${{ inputs.monitor_name }}
+          duration_minutes: ${{ inputs.duration_minutes }}
