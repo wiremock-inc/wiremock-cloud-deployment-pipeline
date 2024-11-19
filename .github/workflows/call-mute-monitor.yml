@@ -1,7 +1,7 @@
 name: Mute Monitor
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       monitor_name:
         description: "The name of the monitor to mute"
