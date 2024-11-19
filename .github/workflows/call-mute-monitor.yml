@@ -17,6 +17,9 @@ jobs:
   mute-monitor:
     runs-on: ubuntu-latest
     steps:
+
+      - uses: actions/checkout@v4
+
       - uses: ./.github/actions/mute-monitor
         with:
           monitor_name: ${{ inputs.monitor_name }}
