@@ -63,6 +63,7 @@ jobs:
           mask-password: 'true'
 
       - name: Temporarily mute DataDog monitor
+        if: ${{ inputs.environment == 'live' }}
         uses: ./.github/actions/mute-monitor
         with:
           monitor_name: Warnings or Errors on WireMock Cloud
