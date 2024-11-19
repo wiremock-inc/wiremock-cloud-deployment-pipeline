@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Run Datadog Synthetics tests in ${{ inputs.environment }}
-        uses: DataDog/synthetics-ci-github-action@v1.13.0
+        uses: DataDog/synthetics-ci-github-action@v1.14.0
         with:
           api_key: ${{secrets.DD_SYNTHETIC_TESTS_API_KEY}}
           app_key: ${{secrets.DD_SYNTHETIC_TESTS_APP_KEY}}
