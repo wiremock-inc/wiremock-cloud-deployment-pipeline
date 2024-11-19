@@ -38,29 +38,20 @@ jobs:
         id: slack_mock_hosts
         uses: slackapi/slack-github-action@v2
         with:
-          channel-id: 'C03H9267J9X'
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            {
-              "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": ${{ toJSON(inputs.slack-body) }}
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            channel: C03H9267J9X
+            text: "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>",
+            blocks:
+              - type: "section",
+                text:
+                  type: "mrkdwn",
+                  text: "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>"
+              - type: "section",
+                text:
+                  type: "mrkdwn",
+                  text: ${{ toJSON(inputs.slack-body) }}
 
       - uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
@@ -78,12 +69,10 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v2
         with:
-          channel-id: 'C03H9267J9X'
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            {
-              "text": "Deployment finished (Completed)",
-              "thread_ts": "${{ steps.slack_mock_hosts.outputs.ts }}",
-              "reply_broadcast": true
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            channel: C03H9267J9X
+            text: "Deployment finished (Completed)",
+            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}",
+            reply_broadcast: true

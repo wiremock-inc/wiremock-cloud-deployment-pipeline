@@ -86,29 +86,20 @@ jobs:
         id: slack_live
         uses: slackapi/slack-github-action@v2
         with:
-          channel-id: 'C03H9267J9X'
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            {
-              "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            channel: C03H9267J9X
+            text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>",
+            blocks:
+             - type: "section",
+               text:
+                 type: "mrkdwn",
+                 text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
+             - type: "section",
+               text:
+                 type: "mrkdwn",
+                 text: ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
 
   deploy-live:
     needs: deploy-live-pre-approve
@@ -144,15 +135,13 @@ jobs:
       - name: Publish completion to Slack
         uses: slackapi/slack-github-action@v2
         with:
-          channel-id: 'C03H9267J9X'
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            {
-              "text": "Deployment finished (Completed)",
-              "thread_ts": "${{ needs.deploy-live-pre-approve.outputs.slack_thread }}",
-              "reply_broadcast": true
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            channel: C03H9267J9X
+            text: "Deployment finished (Completed)",
+            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}",
+            reply_broadcast: true
 
       - name: Get live-pre-approve approver
         id: live-pre-approve-approver
