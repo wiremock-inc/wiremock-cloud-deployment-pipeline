@@ -68,8 +68,6 @@ jobs:
         with:
           monitor_name: Warnings or Errors on WireMock Cloud
           duration_minutes: 30
-          dd_api_key: ${{ secrets.DD_SYNTHETIC_TESTS_API_KEY }}
-          dd_application_key:  ${{ secrets.DD_SYNTHETIC_TESTS_APP_KEY }}
           dd_api_key: ${{ secrets.DD_MUTE_MONITOR_API_KEY }}
           dd_application_key:  ${{ secrets.DD_MUTE_MONITOR_APP_KEY }}
 
