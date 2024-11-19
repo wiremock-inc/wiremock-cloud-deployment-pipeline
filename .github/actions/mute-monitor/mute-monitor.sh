@@ -17,7 +17,7 @@ find_monitor_id() {
   local dd_api_key=$2
   local dd_application_key=$3
 
-  curl -sSf GET "https://api.datadoghq.com/api/v1/monitor/search" \
+  curl -sSf "https://api.datadoghq.com/api/v1/monitor/search" \
     -H "Accept: application/json" \
     -H "DD-API-KEY: ${dd_api_key}" \
     -H "DD-APPLICATION-KEY: ${dd_application_key}" | jq -r ".monitors[] | select(.name == \"$monitor_name\") | .id"
