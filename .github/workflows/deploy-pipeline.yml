@@ -90,15 +90,15 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C03H9267J9X
-            text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>",
+            text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
             blocks:
-              - type: "section",
+              - type: "section"
                 text:
-                  type: "mrkdwn",
+                  type: "mrkdwn"
                   text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
-              - type: "section",
+              - type: "section"
                 text:
-                  type: "mrkdwn",
+                  type: "mrkdwn"
                   text: ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
 
   deploy-live:
@@ -139,8 +139,8 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C03H9267J9X
-            text: "Deployment finished (Completed)",
-            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}",
+            text: "Deployment finished (Completed)"
+            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}"
             reply_broadcast: true
 
       - name: Get live-pre-approve approver

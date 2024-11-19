@@ -42,15 +42,15 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C03H9267J9X
-            text: "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>",
+            text: "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>"
             blocks:
-              - type: "section",
+              - type: "section"
                 text:
-                  type: "mrkdwn",
+                  type: "mrkdwn"
                   text: "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Mock Host deployment of Deployment Pipeline #${{ github.run_number }}>"
-              - type: "section",
+              - type: "section"
                 text:
-                  type: "mrkdwn",
+                  type: "mrkdwn"
                   text: ${{ toJSON(inputs.slack-body) }}
 
       - uses: aws-actions/configure-aws-credentials@v4.0.2
