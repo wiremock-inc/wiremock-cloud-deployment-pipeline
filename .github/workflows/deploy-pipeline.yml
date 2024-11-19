@@ -92,14 +92,14 @@ jobs:
             channel: C03H9267J9X
             text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>",
             blocks:
-             - type: "section",
-               text:
-                 type: "mrkdwn",
-                 text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
-             - type: "section",
-               text:
-                 type: "mrkdwn",
-                 text: ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
+              - type: "section",
+                text:
+                  type: "mrkdwn",
+                  text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
+              - type: "section",
+                text:
+                  type: "mrkdwn",
+                  text: ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
 
   deploy-live:
     needs: deploy-live-pre-approve
