@@ -1,6 +1,7 @@
 name: Mute Monitor
 
 on:
+  push:
   workflow_call:
     inputs:
       monitor_name:
