@@ -62,6 +62,14 @@ jobs:
         with:
           mask-password: 'true'
 
+      - name: Temporarily mute DataDog monitor
+        uses: ./.github/actions/mute-monitor
+        with:
+          monitor_name: Warnings or Errors on WireMock Cloud
+          duration_minutes: 30
+          dd_api_key: ${{ secrets.DD_SYNTHETIC_TESTS_API_KEY }}
+          dd_application_key:  ${{ secrets.DD_SYNTHETIC_TESTS_APP_KEY }}
+
       - run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
 
       - name: Publish completion to Slack
