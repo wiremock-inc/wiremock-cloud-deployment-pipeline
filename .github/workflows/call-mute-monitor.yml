@@ -24,3 +24,5 @@ jobs:
         with:
           monitor_name: ${{ inputs.monitor_name }}
           duration_minutes: ${{ inputs.duration_minutes }}
+          dd_api_key: ${{ secrets.DD_SYNTHETIC_TESTS_API_KEY }}
+          dd_application_key:  ${{ secrets.DD_SYNTHETIC_TESTS_APP_KEY }}

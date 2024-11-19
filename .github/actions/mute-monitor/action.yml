@@ -7,9 +7,15 @@ inputs:
   duration_minutes:
     description: "The number of minutes the monitor should be muted"
     required: false
+  dd_api_key:
+    description: The DataDog API Key to use
+    required: true
+  dd_application_key:
+    description: The DataDog Application Key to use
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - run: ./mute-monitor.sh ${{ inputs.monitor_name }} ${{ inputs.duration }} ${{ secrets.DD_SYNTHETIC_TESTS_API_KEY }} ${{ secrets.DD_SYNTHETIC_TESTS_APP_KEY }}
+    - run: ./mute-monitor.sh ${{ inputs.monitor_name }} ${{ inputs.duration }} ${{ inputs.dd_api_key }} ${{ inputs.dd_application_key }}
       shell: bash
