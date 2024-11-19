@@ -15,6 +15,13 @@ jobs:
       subdomain: dev
     secrets: inherit
 
+  smoke-test-dev:
+    needs: deploy-dev
+    uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/smoke-test.yml@main
+    with:
+      environment: dev
+    secrets: inherit
+
   deploy-dev-mock-hosts:
     needs: deploy-dev
     uses: wiremock-inc/wiremock-cloud-deployment-pipeline/.github/workflows/deploy-mock-hosts.yml@main
