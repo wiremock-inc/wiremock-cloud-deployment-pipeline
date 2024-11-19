@@ -1,7 +1,6 @@
 name: Mute Monitor
 
 on:
-  push:
   workflow_call:
     inputs:
       monitor_name:
@@ -21,6 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/mute-monitor
+        secrets: inherit
         with:
           monitor_name: ${{ inputs.monitor_name }}
           duration_minutes: ${{ inputs.duration_minutes }}
