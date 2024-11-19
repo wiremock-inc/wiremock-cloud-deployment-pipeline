@@ -5,7 +5,7 @@ set -exuo pipefail
 main() {
   local check_name=$1
   local pause=$2
-  local pingdom_token=$2
+  local pingdom_token=$3
 
   local check_id; check_id="$(find_check_id "$check_name" "$pingdom_token")"
   toggle_check "$check_id" "$pause" "$pingdom_token"
