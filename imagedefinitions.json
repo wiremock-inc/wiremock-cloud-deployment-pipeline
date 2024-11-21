@@ -1,10 +1,10 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:add-mock-host-otel",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:1.499.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/actions/runs/11957989721",
+      "sourceCommit": "https://github.com/wiremock-inc/wiremock-cloud-infrastructure/tree/60951f0d77743b4484664f4ca98ea40807ad3ecb"
     }
   },
   {
@@ -17,18 +17,18 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:better-otel",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1485.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/11935749934",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/26f95a684ffd13c5fdb91d1b41d04716201d1cb0"
     }
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:add-otel",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.955.0",
     "metadata": {
-      "sourceAction": "set manually",
-      "sourceCommit": "set manually"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/11958004288",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/bb14e665291a7b84e0ed9837498fbcb8a4cb432b"
     }
   },
   {
