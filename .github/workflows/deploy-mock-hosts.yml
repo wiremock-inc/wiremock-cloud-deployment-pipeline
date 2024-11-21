@@ -63,14 +63,31 @@ jobs:
           mask-password: 'true'
 
       - name: Temporarily mute DataDog monitor
+        if: ${{ inputs.environment == 'live' }}
         uses: ./.github/actions/mute-monitor
         with:
           monitor_name: Warnings or Errors on WireMock Cloud
           duration_minutes: 30
-          dd_api_key: ${{ secrets.DD_SYNTHETIC_TESTS_API_KEY }}
-          dd_application_key:  ${{ secrets.DD_SYNTHETIC_TESTS_APP_KEY }}
+          dd_api_key: ${{ secrets.DD_MUTE_MONITOR_API_KEY }}
+          dd_application_key:  ${{ secrets.DD_MUTE_MONITOR_APP_KEY }}
+
+      - name: Pause Pingdom check
+        if: ${{ inputs.environment == 'live' }}
+        uses: ./.github/actions/toggle-pingdom-check
+        with:
+          check_name: LIVE WireMock Cloud API
+          pause: 'true'
+          pingdom_token:  ${{ secrets.PINGDOM_TOKEN }}
 
       - run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
+
+      - name: Unpause Pingdom check
+        if: ${{ always() && inputs.environment == 'live' }}
+        uses: ./.github/actions/toggle-pingdom-check
+        with:
+          check_name: LIVE WireMock Cloud API
+          pause: 'false'
+          pingdom_token: ${{ secrets.PINGDOM_TOKEN }}
 
       - name: Publish completion to Slack
         if: "${{ inputs.slack-body != '' }}"
