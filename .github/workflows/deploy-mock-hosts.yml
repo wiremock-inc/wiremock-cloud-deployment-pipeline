@@ -98,6 +98,6 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C03H9267J9X
-            text: "Deployment finished (Completed)",
-            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}",
+            text: "Deployment finished (Completed)"
+            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}"
             reply_broadcast: true
