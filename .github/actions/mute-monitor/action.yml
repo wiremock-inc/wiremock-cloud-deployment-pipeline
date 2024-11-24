@@ -17,6 +17,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ./mute-monitor.sh "${{ inputs.monitor_name }}" "${{ inputs.duration_minutes }}" ${{ inputs.dd_api_key }} ${{ inputs.dd_application_key }}
+    - run: ./mute-monitor.main.kts "${{ inputs.duration_minutes }}" ${{ inputs.dd_api_key }} "${{ inputs.monitor_name }}" ${{ inputs.dd_application_key }}
       working-directory: ${{ github.action_path }}
       shell: bash
