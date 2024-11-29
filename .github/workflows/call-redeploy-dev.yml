@@ -23,6 +23,9 @@ jobs:
           app-id: 862323
           private-key: ${{ secrets.SERVICE_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
+
+      - run: (tag_name=${{ inputs.tag_name }}; echo "fixed_tag_name=${tag_name//[^a-zA-Z0-9\._-]/_}") >> $GITHUB_ENV
+
       - uses: actions/github-script@v7
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
@@ -34,6 +37,6 @@ jobs:
               ref: 'main',
               inputs: {
                 name: '${{ inputs.name }}',
-                tag_name: '${{ inputs.tag_name }}'
+                tag_name: '${{ env.fixed_tag_name }}'
               }
             })
