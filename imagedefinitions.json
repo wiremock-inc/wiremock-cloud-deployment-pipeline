@@ -1,7 +1,7 @@
 [
   {
     "name": "cdk",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:superset-alert-reports",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-cdk:lower-mothership-body-size-limit",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
