@@ -33,6 +33,8 @@ jobs:
           echo "$EOF" >> $GITHUB_OUTPUT
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "slack_release_notes<<$EOF" >> $GITHUB_OUTPUT
+          echo "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline \#${{ github.run_number }}>"  >> $GITHUB_OUTPUT
+          echo >> $GITHUB_OUTPUT
           echo "$release_notes" | sed 's/\[\([^]]*\)\](\([^)]*\))/<\2|\1>/g'  >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
           echo "$release_notes" >> $GITHUB_STEP_SUMMARY
@@ -90,16 +92,7 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C03H9267J9X
-            text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
-            blocks:
-              - type: "section"
-                text:
-                  type: "mrkdwn"
-                  text: "Second approval required for <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|live deploy of Deployment Pipeline #${{ github.run_number }}>"
-              - type: "section"
-                text:
-                  type: "mrkdwn"
-                  text: ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
+            text: ${{ toJSON(needs.create-release-notes.outputs.slack_release_notes) }}
 
   deploy-live:
     needs: deploy-live-pre-approve

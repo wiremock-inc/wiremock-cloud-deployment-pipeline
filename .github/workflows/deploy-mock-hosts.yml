@@ -79,11 +79,13 @@ jobs:
           pause: 'true'
           pingdom_token:  ${{ secrets.PINGDOM_TOKEN }}
 
-      - run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
+      - name: Deploy Mock Hosts
+        run: ./deploy.sh -p wiremock-cloud -e ${{ inputs.environment }} -r ${{ inputs.region }} mock-hosts
 
       - name: Unpause Pingdom check
         if: ${{ always() && inputs.environment == 'live' }}
         uses: ./.github/actions/toggle-pingdom-check
+        continue-on-error: true
         with:
           check_name: LIVE WireMock Cloud API
           pause: 'false'
@@ -93,11 +95,12 @@ jobs:
         if: "${{ inputs.slack-body != '' }}"
         id: slack
         uses: slackapi/slack-github-action@v2
+        continue-on-error: true
         with:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C03H9267J9X
-            text: "Deployment finished (Completed)",
-            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}",
+            text: "Mock Host Deployment finished (Completed)"
+            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}"
             reply_broadcast: true
