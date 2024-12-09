@@ -21,7 +21,7 @@ permissions: write-all
 
 jobs:
   redeploy-dev:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
 
       - name: Generate a token
