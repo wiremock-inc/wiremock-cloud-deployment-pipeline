@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.808.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:fix_csp-warning-googletagmanager",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/12278060740",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/c586c8011a059581ee98df6c5aafef8951fad0b6"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
