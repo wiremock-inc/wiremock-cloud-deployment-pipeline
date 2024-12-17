@@ -11,8 +11,8 @@
     "name": "ui",
     "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.814.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/12376972020",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/2bd89723aed9922d5884548c55348ddc61c9e0dd"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
