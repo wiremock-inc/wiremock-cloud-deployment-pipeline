@@ -17,7 +17,7 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1531.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:delete-dangling-team-subjects",
     "metadata": {
       "sourceAction": "set manually",
       "sourceCommit": "set manually"
