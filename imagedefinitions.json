@@ -9,10 +9,10 @@
   },
   {
     "name": "ui",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:0.816.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-ui:error-on-invalid-jwt-audience",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/ui/actions/runs/12430057160",
-      "sourceCommit": "https://github.com/wiremock-inc/ui/tree/b0c0f93a1a1837bbbac73721a13fc2c23fd16dba"
+      "sourceAction": "set manually",
+      "sourceCommit": "set manually"
     }
   },
   {
