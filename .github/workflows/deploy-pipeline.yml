@@ -133,7 +133,7 @@ jobs:
           payload: |
             channel: C03H9267J9X
             text: "Deployment finished (Completed)"
-            thread_ts: "${{ steps.slack_mock_hosts.outputs.ts }}"
+            thread_ts: "${{ needs.deploy-live-pre-approve.outputs.slack_thread }}"
             reply_broadcast: true
 
       - name: Get live-pre-approve approver
