@@ -17,18 +17,18 @@
   },
   {
     "name": "mothership",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1550.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mothership:1.1552.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/12632959579",
-      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/0e543faa847f03f46772b129763e8ad9fbbfc1bf"
+      "sourceAction": "https://github.com/wiremock-inc/mothership/actions/runs/12674708293",
+      "sourceCommit": "https://github.com/wiremock-inc/mothership/tree/3f4160ba1ba27b01da63255627891d54433c57a2"
     }
   },
   {
     "name": "mock-host",
-    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.1000.0",
+    "imageUri": "499333472133.dkr.ecr.us-east-1.amazonaws.com/wiremock-cloud-mock-host:1.1003.0",
     "metadata": {
-      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/12634775862",
-      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/b6b40022ce044a118c4836384dc60a6d05960cbb"
+      "sourceAction": "https://github.com/wiremock-inc/mock-host/actions/runs/12674770695",
+      "sourceCommit": "https://github.com/wiremock-inc/mock-host/tree/ec8277857d8841e416b11190d2205c6d70924655"
     }
   },
   {
